@@ -1,0 +1,46 @@
+body {background-color: #F6F4F4;}
+
+h2 {
+  margin-top: 1.25em;
+  margin-bottom: 0.75em;
+  color: white;
+  font-weight: bold;
+  size: 16px;
+  background-color: #645E54;
+  border-radius: 5px;
+  border: solid #645E54 1px;
+  box-shadow: 1px 1px 3px #645E54;
+}
+
+
+h3 {
+  color: black;
+  font-weight: 500;
+  text-indent: 0.5em;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid black 1px;
+  box-shadow: 1px 1px 5px darkgray;
+}
+
+.pagedtable-wrapper {
+  background-color: white;
+  border: solid black 1px;
+  box-shadow: 1px 1px 5px darkgray;
+}
+
+pre {
+  background-color: white;
+  border: solid black 1px;
+  box-shadow: 1px 1px 5px darkgray;
+}
+
+p {
+  text-indent: 1em;
+  text-align: justify;
+  text-justify: inter-word;
+}

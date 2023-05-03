@@ -1,0 +1,83 @@
+---
+title: "vrai_porjet"
+author: "nous"
+date: "2023-05-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+une intro, on fera à la fin?
+
+# Projet assurance et auto-assurance
+
+définition autoassurance
+
+donner des exemples de cas dans lesquels l'auto-assurance est assez courante (entreprises/particuliers)
+
+## Quels sont les avantages et les inconvénients de l'auto-assurance par rapport à l'assurance traditionnelle ? 
+
+
+
+### le coût  
+formules, explication intuitive de pourquoi  
+1/2 exemples de risque face à une forme d'assurance montrant que dans un cas l'autoassurance est mieux, dans l'autre l'assurance standard et mieux, histoire d'illustrer dans quels cas on préfère l'une à l'autre.  
+1 ou 2 suivant ce qui permet d'illustrer le mieux.
+
+### exposition au risque  
+idem
+
+### ...
+### ...
+reprendre les trucs que chatgpt a dit, éventuellement trouver d'autres / regrouper / réorganiser  
+
+### Pour quels types de risques?  
+comme on a vu précédemment, çà, çà, çà et çà. De manière plus générale, çà c'est mieux dans tel cas parce que, çà c'est mieux dans tel cas parce que.  
+Au final, l'autoassurance n'est viable qu'à l'intersection de çà, çà et çà. Elle semble donc assez limitée.  
+
+Dans la prochaine partie, on va illustrer cela dans des systèmes avec des individus divers ayant des fortunes diverses et se voyant proposer plusieurs types de contrats d'assurance.
+
+## Comment l'auto-assurance peut-elle aider à combler les lacunes de couverture laissées par l'assurance traditionnelle ?  
+
+On a vu plus haut que l'autoAss était envisageable pour çà et çà. En pratique, beaucoup de personnes ont recours à l'autoassurance du fait de lacunes de couvertures par l'assurance tradi. Oar exemple:  
+- Certaines personnes ne peuvent plus souscrire à des assurance, par exemple voiture, suite à des problèmes antérieurs.  
+- La plupart des contrats d'assurance ne couvrent pas tous les risques.  
+- ???
+- Profit   
+(déso j'ai confondu)  
+
+### suite
+pour la suite on veut mettre en évidence le choix des gens entre prendre une assurance ou rester en auto-assurance en fonction de:  
+- leur niveau de revenu ou revenu+épargne  
+- leur profil d'utilité (on va prendre plusieurs fonctions d'utilité je pense?)  
+- leur profil de risque (chaque gonze va avoir ses propres probas d'avoir une couille)  
+
+pour chaque mec et chaque police d'assurance on calculera (ou simulera, probablement plus facile) 
+- son utilité sur un an vu que les souscriptions sont en général d'un an avant de pouvoir changer  
+- son *équivalent de variation* par rapport à l'auto-assurance  
+  
+ensuite on n'aura plus qu'à générérer aléatoirement des populations de mecs, et regarder l'évolution du "bonheur général", genre avec la fonction utilitarienne (somme des utilités de la pop) ou autre suivant quand ajoute ou pas la possibilité d'avoir telle ou telle police d'assurance  
+
+on identifie les types de gonzes qui restent en auto-assurance -> voilà c'est eux qu'il faudrait cibler en cherchant à créer de nouveaux types de contrats vu que c'est eux qui sont tristes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

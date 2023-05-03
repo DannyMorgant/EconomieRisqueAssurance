@@ -1,0 +1,215 @@
+---
+title: "Assurance et auto-assurance"
+author: "Maxime Gouttes, Danny Morgant, Yoann Pull, Louis Quenault"
+date: "2023-04-30"
+output: 
+  html_document:
+    theme: cosmo
+    css: custom_report.css
+    code_folding: hide
+    toc : yes
+    toc_float: yes
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+palette = c("blue", "green", "salmon")
+```
+
+# Définition chatgpt, à vérifier.
+L'auto-assurance est une méthode de gestion des risques dans laquelle une personne ou une entreprise décide de supporter elle-même les coûts des sinistres éventuels plutôt que de transférer ce risque à un tiers, tel qu'un assureur. Cela implique généralement la constitution d'un fonds de réserve, qui est utilisé pour couvrir les coûts des sinistres lorsque cela est nécessaire. L'auto-assurance peut être utilisée pour gérer une variété de risques, tels que les accidents de voiture, les maladies, les pertes d'emploi et les dommages matériels. Les décisions d'auto-assurance sont souvent prises par des entreprises ou des particuliers qui estiment que les primes d'assurance sont trop élevées ou que la couverture proposée ne répond pas à leurs besoins spécifiques. L'auto-assurance peut également être utilisée en complément à une police d'assurance traditionnelle pour réduire les primes d'assurance ou augmenter la couverture.
+
+# Problématiques proposées par chatgpt:  
+- Quels sont les avantages et les inconvénients de l'auto-assurance par rapport à l'assurance traditionnelle ?  
+- Comment les assureurs peuvent-ils adapter leurs offres face à la montée de l'auto-assurance ?  
+- L'auto-assurance peut-elle être une alternative viable pour les entreprises qui cherchent à réduire leurs coûts d'assurance ?  
+- Les consommateurs sont-ils prêts à abandonner les polices d'assurance traditionnelles au profit de l'auto-assurance ?  
+- Comment les assureurs peuvent-ils évaluer le risque de leurs clients qui optent pour l'auto-assurance ?  
+- Comment les lois et les réglementations encadrent-elles l'auto-assurance et comment cela affecte-t-il son développement ?  
+- Comment l'auto-assurance peut-elle aider à combler les lacunes de couverture laissées par l'assurance traditionnelle ?  
+- Comment les assureurs peuvent-ils travailler avec les clients qui optent pour l'auto-assurance pour offrir une couverture plus complète et cohérente ?  
+- L'auto-assurance peut-elle devenir une solution plus courante pour les consommateurs qui ont des difficultés à obtenir une assurance traditionnelle ?  
+- Comment l'auto-assurance peut-elle aider les consommateurs à mieux comprendre et à gérer leurs risques ?  
+- Comment l'auto-assurance peut-elle être utilisée pour encourager une meilleure gestion des risques et une culture de prévention ?  
+- Quelles sont les différences entre l'auto-assurance et les contrats d'assurance en matière de coûts, de couverture et de responsabilité ?  
+- Comment les entreprises peuvent-elles décider si l'auto-assurance est la bonne option pour leur gestion des risques ?  
+- Quels sont les impacts de l'auto-assurance sur les systèmes de santé et les systèmes de sécurité sociale ?  
+- Comment les fournisseurs d'assurance traditionnels peuvent-ils s'adapter à la montée de l'auto-assurance et offrir des produits qui répondent aux besoins des clients ?  
+- Quels sont les avantages et les inconvénients de l'auto-assurance pour les travailleurs indépendants et les micro-entrepreneurs ?  
+- Comment les entreprises peuvent-elles évaluer la rentabilité de l'auto-assurance par rapport aux primes d'assurance traditionnelles ?  
+- Comment les gouvernements peuvent-ils réglementer l'auto-assurance pour protéger les consommateurs et éviter les abus ?  
+- Comment les particuliers peuvent-ils apprendre à gérer efficacement leur propre auto-assurance et éviter les risques financiers excessifs ?  
+- Quels sont les impacts de l'auto-assurance sur les industries à risque élevé, telles que l'industrie minière, la construction et l'aviation ?  
+
+# Me paraît bien:  
+
+## Quels sont les avantages et les inconvénients de l'auto-assurance par rapport à l'assurance traditionnelle ?  
+
+pour une intro, 1/2 pages avec quelques équations et explications. Ca plante le sujet et les notions. Limite prendre plusieurs exemples simples avec des vraies polices d'assurances et des vraies loteries pour illustrer chaque point.  
+
+### Avantages de l'auto-assurance :
+
+- Réduction des coûts : l'auto-assurance peut être moins coûteuse à long terme car les primes d'assurance ne sont pas payées et les coûts d'administration de l'assurance sont évités.  
+- Flexibilité : l'auto-assurance permet une plus grande flexibilité dans la conception de la couverture et dans la manière dont les fonds sont gérés.  
+- Contrôle : l'auto-assurance permet de garder le contrôle sur la gestion des risques et sur la manière dont les fonds sont utilisés.  
+- Économies fiscales : les fonds d'auto-assurance peuvent être déductibles d'impôt pour les entreprises.  
+
+### Inconvénients de l'auto-assurance :  
+
+- Exposition au risque : l'auto-assurance expose les entreprises et les particuliers à des risques financiers plus importants en cas de sinistre.  
+- Liquidités : l'auto-assurance nécessite des liquidités suffisantes pour pouvoir couvrir les coûts des sinistres.  
+- Capacité de gestion des risques : l'auto-assurance nécessite une capacité de gestion des risques adéquate pour être efficace.  
+- Limitation de la couverture : l'auto-assurance peut être limitée en termes de couverture par rapport à une assurance traditionnelle.  
+- Incertitude : l'auto-assurance peut entraîner une certaine incertitude quant aux coûts futurs, qui peuvent être difficiles à prévoir.
+
+
+Il manque pas une histoire de coût d'opportunité? genre les thunes qui servent à çà servent pas à autre chose?  
+
+## Pour quels types de risques :  
+
+L'auto-assurance peut être une option viable pour des risques qui sont :  
+
+- Prévisibles : si le risque est prévisible, il peut être plus facile pour l'entreprise ou le particulier de budgétiser les coûts d'auto-assurance nécessaires pour couvrir le risque.  
+- Gérables : si le risque est gérable, c'est-à-dire qu'il peut être réduit ou évité par des mesures de prévention ou de gestion des risques, l'auto-assurance peut être une option viable.  
+- Faibles ou moyens : pour les risques à faible ou moyen niveau, les primes d'assurance peuvent être relativement faibles, ce qui rend l'auto-assurance plus viable.  
+- Compatibles avec la capacité de gestion des risques de l'entreprise ou du particulier : pour que l'auto-assurance soit efficace, il est important que l'entreprise ou le particulier ait la capacité de gérer efficacement le risque et de gérer les fonds nécessaires pour couvrir les coûts.  
+
+L'auto-assurance peut ne pas être une option viable pour les types de risques suivants :  
+
+- Les risques à haut niveau, tels que les catastrophes naturelles majeures, les incidents de responsabilité civile importants ou les pertes commerciales importantes. Ces risques peuvent être difficiles à gérer en interne et peuvent nécessiter une assurance traditionnelle.  
+- Les risques complexes, tels que les risques financiers, les risques de réputation ou les risques environnementaux. Ces risques nécessitent souvent une expertise spécialisée et une assurance traditionnelle peut être la meilleure option pour assurer une couverture adéquate.  
+- Les risques qui sont réglementés par la loi. Certaines lois exigent que les entreprises ou les particuliers souscrivent une assurance pour couvrir certains types de risques, tels que la responsabilité civile professionnelle.  
+- Les risques qui sont coûteux à gérer. L'auto-assurance peut être moins coûteuse que l'assurance traditionnelle pour les risques à faible ou moyen niveau. Cependant, pour les risques coûteux à gérer, tels que les risques liés à la santé ou à la sécurité, l'assurance traditionnelle peut être une meilleure option car elle peut fournir des ressources et des services spécialisés pour aider à gérer les risques.  
+
+
+## Comment l'auto-assurance peut-elle aider à combler les lacunes de couverture laissées par l'assurance traditionnelle ?  
+
+L'auto-assurance peut aider à combler les lacunes de couverture laissées par l'assurance traditionnelle de plusieurs manières :
+
+- Couvrir les coûts de franchise : Les polices d'assurance traditionnelles peuvent comporter une franchise, c'est-à-dire une somme d'argent que l'assuré doit payer avant que l'assurance ne couvre les coûts restants. Si le montant de la franchise est élevé, l'auto-assurance peut être utilisée pour couvrir les coûts de la franchise.  
+- Couvrir les coûts de dommages mineurs : Les polices d'assurance traditionnelles peuvent ne pas couvrir les coûts de dommages mineurs, car ils sont considérés comme insignifiants ou ne dépassent pas la franchise. Dans ce cas, l'auto-assurance peut être utilisée pour couvrir ces coûts.  
+- Ajouter une couverture supplémentaire : Les polices d'assurance traditionnelles peuvent ne pas couvrir tous les risques ou événements, tels que les événements météorologiques extrêmes ou les catastrophes naturelles. Dans ce cas, l'auto-assurance peut être utilisée pour ajouter une couverture supplémentaire pour ces événements.  
+- Assurer une continuité de couverture : Les polices d'assurance traditionnelles peuvent expirer ou être résiliées, ce qui peut laisser l'assuré sans couverture. L'auto-assurance peut être utilisée pour assurer une continuité de couverture entre les polices d'assurance traditionnelles.  
+
+Il est important de noter que l'auto-assurance ne peut être utilisée que pour combler les lacunes de couverture mineures ou modérées. Pour les risques majeurs ou les événements coûteux, l'assurance traditionnelle est souvent la meilleure option pour une protection adéquate.
+
+
+----
+
+Le gros du projet, ça çà me paraît super comme sujet, on peut faire plein de trucs:  
+
+- prendre différentes fonctions d'utilité et richesses de départ et regarder les préférences entre 2 types d'assurances traditionnelles (genre "minimale", "tous risques") et de l'auto-assurance  
+- faire des simulations sur des populations composées d'individus avec des richesses différentes (idéalement représentant la répartition de richesse typique d ela société), voir quelle politique d'assurance ils préfèrent et quelle utilité çà leur donne -> on peut mesurer le bien-être de la société vis-)-vis des politiques d'assurance selon plusieurs critères (utilitarisme = somme des $U_i$, $min(U_i)$, approche hybride avec somme des utilités du quartile le moins bien loti...etc...)  
+- peut permettre de voir l'impact des inégalités sur les politiques d'assurance, des politiques d'assurance sur le maintient des inégalités...etc... (w_0 -> Assur(w_0) -> u_0, voir quels groupes préfèrent quelles assurances, comment çà impacte leur utilité => proposition de construction de contrats d'assurance tunées pour les groupes qui préfèrent l'auto-assurance)
+- réutiliser le framework au-dessus pour trouver des combinaisons de formules d'assurance qui maximisent le bien-être selon un critère qu'on aura décidé.
+
+----
+
+Problème: on ne peut pas vraiment faire la somme des utilités pour avoir une mesure du "bien-être" de la société si les individus n'ont pas la même fonction d'utilité (parce que cette fonction ne sert qu'à ordonner les choix, la valeur qu'elle leur donne est arbitraire). Réponse de chatgpt:  
+
+> how to measure social welfare (for example utilitarian) when the individuals have different utility functions?
+
+*When individuals have different utility functions, it can be challenging to measure social welfare using a utilitarian approach. However, one possible approach is to use a concept called "equivalent variation."*
+
+*Equivalent variation measures the amount of income or compensation that would need to be given to an individual to make them indifferent between a proposed change in their utility and their current utility level. This approach allows for the comparison of different individuals' welfare levels, even when they have different utility functions.*
+
+*To apply this concept to measure social welfare, one would first need to measure the change in utility for each individual resulting from a proposed policy change. Then, the equivalent variation for each individual would be calculated based on their utility function. Finally, the equivalent variations for all individuals would be summed to obtain a measure of the overall social welfare impact of the policy change.*
+
+*It is important to note that the equivalent variation approach relies on the assumption that individuals have well-defined utility functions that are continuous and differentiable. This assumption may not always hold in real-world situations, and other approaches may need to be used to measure social welfare in these cases.*
+
+> Can you give an simple example of how to compute social welfare using equivalent variation?  
+
+*Sure! Here's a simple example of how to compute social welfare using equivalent variation:*
+
+*Suppose there are two individuals, Alice and Bob, and they each have a different utility function. Alice's utility function is given by U(A) = A, where A is her income, and Bob's utility function is given by U(B) = √B, where B is his income.*
+
+*Suppose a policy change is proposed that would increase Alice's income by $100 and decrease Bob's income by $50. To measure the social welfare impact of this policy change, we can use the concept of equivalent variation.*
+
+*First, we need to calculate the change in utility for each individual. For Alice, her new utility level would be U(A+100) = A+100. Her change in utility would be U(A+100) - U(A) = (A+100) - A = 100.*
+
+*For Bob, his new utility level would be U(B-50) = √(B-50). His change in utility would be U(B-50) - U(B) = √(B-50) - √B.*
+
+*Next, we need to calculate the equivalent variation for each individual. To do this, we need to determine how much money would need to be given to each individual to make them indifferent between their current utility level and the new utility level resulting from the policy change.*
+
+*For Alice, the equivalent variation would be the amount of money that would need to be given to her to make her indifferent between her current utility level and the utility level resulting from the policy change. This can be calculated as the difference in income levels that would yield the same utility level: EV(A) = A+100 - A = 100.*
+
+*For Bob, the equivalent variation would be the amount of money that would need to be taken away from him to make him indifferent between his current utility level and the utility level resulting from the policy change. This can be calculated as the difference in income levels that would yield the same utility level: EV(B) = B - (B-50)^2/B.*
+
+**Finally, to measure the overall social welfare impact of the policy change, we can sum the equivalent variations for each individual: EV(A) + EV(B) = 100 + (B - (B-50)^2/B). This gives us a measure of the total amount of compensation that would need to be given to the individuals to make them indifferent between their current utility level and the new utility level resulting from the policy change.**
+
+
+----
+Code à la con que j'ai tenté vite fait.
+
+
+```{r}
+W_max = 3000
+u1 = function(w) sqrt(w)
+u2 = function(w) log(w+1) * sqrt(W_max) / log(1+W_max)
+u3 = function(w, a) w**a * sqrt(W_max) / W_max**a
+
+X = data.frame("x" = 0:5000)
+X$sqrt = u1(X$x)
+X$ln = u2(X$x)
+X$athird = u3(X$x, 1/3)
+X
+```
+
+```{r}
+library(ggplot2)
+ggplot(data=X) +
+  geom_line(aes(x=x, y=sqrt, color=palette[1])) +
+  geom_line(aes(x=x, y=ln, color=palette[2])) +
+  geom_line(aes(x=x, y=athird, color=palette[3])) +
+  geom_vline(xintercept=W_max)
+```
+
+```{r}
+W = data.frame("w" = sapply(rnorm(1000, 2200, 1000), function(x) max(0, x)))
+W$u1 = u1(W$w)
+W$u2 = u2(W$w)
+W$u3 = u3(W$w, 1/3)
+W$maxU = apply(W[, 2:4], 1, max)
+
+plot(sort(W$maxU))
+```
+
+```{r}
+library(gridExtra)
+N = 1000
+individuals = data.frame("income" = runif(N, min=900, max=5000),
+                         "savings" = runif(N, min=0, max=10000))
+individuals$total = individuals$income + individuals$savings
+
+best_utility = function(w) {
+  best_u = u1(w)
+  result = 1
+  if (u2(w) > best_u) {
+    best_u = u2(w)
+    result = 2
+  }
+  if (u3(w, 1/3) > best_u) {
+    best_u = u3(w, 1/3)
+    result = 3
+  }
+  result
+}
+
+individuals$plan = sapply(individuals$total, best_utility)
+table(individuals$plan)
+```
+
+
+```{r}
+risk = data.frame("p" = c(0.1, 0.9),
+                  "cost" = c(200, 0))
+```
+
+
+
+
+
+
