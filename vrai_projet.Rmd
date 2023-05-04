@@ -1,12 +1,20 @@
 ---
-title: "vrai_porjet"
-author: "nous"
+title: "Assurance et autoassurance"
+author: "Maxime Gouttes, Danny Morgant, Yoann Pull, Louis Quenault"
 date: "2023-05-03"
-output: html_document
+output: 
+  html_document:
+    theme: cosmo
+    css: custom_report.css
+    code_folding: hide
+    toc : yes
+    toc_float: yes
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
 ```
 
 une intro, on fera à la fin?
@@ -49,6 +57,8 @@ On a vu plus haut que l'autoAss était envisageable pour çà et çà. En pratiq
 (déso j'ai confondu)  
 
 ### suite
+
+
 pour la suite on veut mettre en évidence le choix des gens entre prendre une assurance ou rester en auto-assurance en fonction de:  
 - leur niveau de revenu ou revenu+épargne  
 - leur profil d'utilité (on va prendre plusieurs fonctions d'utilité je pense?)  
@@ -63,21 +73,451 @@ ensuite on n'aura plus qu'à générérer aléatoirement des populations de mecs
 on identifie les types de gonzes qui restent en auto-assurance -> voilà c'est eux qu'il faudrait cibler en cherchant à créer de nouveaux types de contrats vu que c'est eux qui sont tristes.
 
 
+Afin de pouvoir regarder comment évolue l'utilité d'un indidividu en fonction de plusieurs facteurs dont les politiques d'assurances auxquelles il a souscrit, nous aurons besoin d'un modèle. Tout d'abord, nous devons prendre en compte que nous souhaitons comparer avec l'autoassurance, qui nécessite que l'individu absorbe lui-même le risque pour lequel il s'autoassure, des politiques d'assurance traditionnelles. Ceci implique notamment que l'individu va très probablement devoir mettre de l'argent de côté afin de pouvoir le gérer. Nos modèles doivent donc prendre en compte à la fois les revenus de l'individu et son épargne, tout en calculant son utilité sur sa consommation. Il nous a semblé difficile de correctement modéliser ce genre de choix à une période, aussi nous avons décidé de travailler su plusieurs. Nous avons choisi des étapes mensuelles et un horizon à deux ans. Notre idée est que l'individu doit gérer son risque dans le temps, et l'horizon de temps de un an nous semblait raisonnable.  
+
+Nous considérons donc que chaque mois, l'individu fait un choix d'allocation: soit il utilise ses revenus pour consommer, soit pour constituer une réserve permettant d'absorber un risque dans le cas où il serait soumis à un. Nous assimilons l'épargne que l'individu effectue en vue d'accomplir des projets personnels futurs comme de la consommation par simplicité. Le choix de la quantité à consommer chaque mois dépend donc de la quantité d'argent que l'individu souhaite avoir épargné pour gérer son propre risque et qui reste à déterminer. Il s'agit d'un problème de contrôle optimal discret dans lequel l'individu cherche à maximiser la somme de ses utilités tout au long de l'année. L'individu a également une perception du poids qu'il souhaite accorder à ses utilités futures, que nous modéliserons sous la forme d'un facteur inférieur appartement à $[0, 1]$.  
+
+$$U = \Sigma_{i=0}^{11} \text{utilité(consommation}_i \text{)} \cdot \text{facteur_oubli}^i $$
+
+Face à chaque risque, un individu fait un choix d'assurance parmi celles disponibles. Comme tous les individus sont différents nous allons devoir prendre en compte plusieurs formes possibles de fonctions d'utilité représentant différent niveaux d'aversion au risque. Cependant, nous ne pourrons pas directement comparer les utilités de différents individus puisque ces fonctions ne servent qu'à ordonner des choix ou situations de leur point de vue mais leurs valeurs n'ont pas de sens. Néanmoins, nous voulons comparer les gains de *bien-être* (*welfare*) que des individus différents auraient à passer d'un type de contrat d'assurance à un autre.  
+
+### La variation équivalente  
+
+La variation équivalente (VE) est une manière de mesurer le gain *bien-être* d'un individu à passer d'une siuation à une autre. Au lieu d'exprimer ce gain sous la forme d'une valeur d'utilité, elle est exprimée sous la forme d'une somme monétaire. Il s'agit de la somme qui conduit à l'égalité suivante:  
+$$U_{situation_1}(x + VE) = U_{situation_2}(x)$$
+
+Elle s'interprète comme la quantité d'argent supplémentaire qu'il faudrait donner à un individu dans la situation 1 pour qu'il ait la même utilité que lorsqu'il est dans la situation 2. Si l'individu préfère la situation 2 alors $VE > 0$, et inversement. Ceci vaut à la condition que les fonctions d'utilités soient strictement croissantes, ce qui sera le cas dans le reste de ce document.  
+L'avantage de cette approche est que nous pouvons comparer les variations équivalentes d'individus ayant des fonctions d'utilités différentes. Comme nous souhaitons comparer les choix des individus entre différentes polices d'assurance pour différents niveaux d'aversion au risque, c'est donc ce que nous allons utiliser.
+
+### Types de contrats d'assurance considérés  
+
+Nous allons considérer quatre contrats d'assurance dans ce projet: 
+- l'auto-assurance, que l'on assimile à un contrat dans lequel l'individu absorbe tout son risque.  
+- la couverture totale, dans laquelle l'individu paie une mensualité en échange de la prise en charge totale des réalisations du risque auquel il est soumis.  
+- un contrat à franchise $200$ et à remboursement partiel, nous avons choisi d'utiliser $80$%.  
+- un contrat à franchise $800$ et à remboursement partiel, ici aussi $80$%.  
+
+Nous pourrons ainsi comparer les deux cas classiques à une police d'assurance non linéaire plutôt adaptés aux revenus modestes et une plutôt adaptée aux revenus plus élevés. Notre objectif est de regarder comment les revenus, l'épargne, et le profil d'aversion au risque influe sur le choix de police d'assurance. Nous espérons identifier quelle population préfère l'auto-assurance et pour quel types de risques. Dans un premier temps nous prendrons en compte des assurances sans prime d'assurance. Nous en introduirons une dans la dernière partie.  
+
+### Simulations
+
+Nous allons considérer des individus aux fonctions d'utilité linéaires, de puissance $1/2$, et logarithmique. L'idée est de balayer depuis les individus neutres au risque jusqu'à des individus très averses au risque. Nous allons également leur donner un facteur d'oubli de 1 afin de ne pas modéliser le fait qu'au moment où l'individu fait son choix de police d'assurance et de cible des on intérêt reste plus porté sur le court terme que le long terme. Nous souhaitons en effet plutôt modéliser un agent rationnel qui prend une décision optimale.  
+
+```{python}
+import math
+def linear_utility(x): return x
+
+def logarithmic_utility(x): return math.log(1+x)
+
+def power_utility(x, exponent=0.5): return x**exponent
+```
+
+Afin de modéliser différentes richesses d'individus, nous allons prendre en compte à la fois leur épargne initiale et leurs revenus. Afin d'éviter de complexifier le modèle nous considérons le revenu disponible des individus, et uniquement l'épargne qu'ils souhaitent allouer à la gestion de leur risque. Nous prendrons pous cela des individus aux revenus disponibles de *400*, *1200* et *4000*, et des épargnes initiales soit nulles soit de 10000.  
+
+Nous soumettons ces individus à différents types de risques à la conditions qu'ils puissent s'assurer contre: 
+- Un risque de faible probabilité et faible coût avec $5$% de chances de subir un coût de 500.  
+- Un risque de forte probabilité et faible coût avec $40$% de chances de subir un coût de 500.  
+- Un risque de faible probabilité et coût élevé avec $5$% de chances de subir un coût de 5000.  
+- Un risque de forte probabilité et coût élevé avec $40$% de chances de subir un coût de 5000.  
+
+```{python, eval=F}
+months = 24
+iters = 1000
+
+risk_LL = Risk({0.05: 500})
+risk_LH = Risk({0.05: 5000})
+risk_HL = Risk({0.4: 500})
+risk_HH = Risk({0.4: 5000})
+risks = [risk_LL, risk_LH, risk_HL, risk_HH]
+
+incomes = [400, 1200, 4000]
+savings = [0, 10000]
+utilities = [linear_utility, power_utility, logarithmic_utility]
+
+for income in incomes:
+  for risk in risks:
+    for s in savings:
+      for utility in utilities:
+        agent = Agent(income=income, initial_savings=s, risk=risk, 
+                      decay_factor=1, utility_func=utility)
+        policy_full = Insurance(risk)
+        policy_200_80 = Insurance(risk, franchise=200, reimbursement_part=0.8)
+        policy_800_80 = Insurance(risk, franchise=800, reimbursement_part=0.8)
+        
+        EVs = [0]
+        policy_B_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_B_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_B_EV)
+          
+        policy_C_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_C_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_C_EV)
+          
+        policy_D_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_D_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_D_EV)
+         
+        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
+        
+        row = [income, s, risk, utility, best_policy]
+        print(row)
+```
+
+### Résultats
+
+```
+[400, 0, Risk({0.05: 500}), 'linear', 1]
+[400, 0, Risk({0.05: 500}), 'square root', 1]
+[400, 10000, Risk({0.05: 500}), 'linear', 1]
+[400, 10000, Risk({0.05: 500}), 'square root', 1]
+[400, 0, Risk({0.05: 5000}), 'linear', 0]
+[400, 0, Risk({0.05: 5000}), 'square root', 1]
+[400, 10000, Risk({0.05: 5000}), 'linear', 0]
+[400, 10000, Risk({0.05: 5000}), 'square root', 1]
+[400, 0, Risk({0.4: 500}), 'linear', 0]
+[400, 0, Risk({0.4: 500}), 'square root', 1]
+[400, 10000, Risk({0.4: 500}), 'linear', 0]
+[400, 10000, Risk({0.4: 500}), 'square root', 1]
+[400, 0, Risk({0.4: 5000}), 'linear', 0]
+[400, 0, Risk({0.4: 5000}), 'square root', 0]
+[400, 10000, Risk({0.4: 5000}), 'linear', 0]
+[400, 10000, Risk({0.4: 5000}), 'square root', 0]
+[1200, 0, Risk({0.05: 500}), 'linear', 1]
+[1200, 0, Risk({0.05: 500}), 'square root', 1]
+[1200, 10000, Risk({0.05: 500}), 'linear', 1]
+[1200, 10000, Risk({0.05: 500}), 'square root', 1]
+[1200, 0, Risk({0.05: 5000}), 'linear', 1]
+[1200, 0, Risk({0.05: 5000}), 'square root', 1]
+[1200, 10000, Risk({0.05: 5000}), 'linear', 1]
+[1200, 10000, Risk({0.05: 5000}), 'square root', 1]
+[1200, 0, Risk({0.4: 500}), 'linear', 1]
+[1200, 0, Risk({0.4: 500}), 'square root', 1]
+[1200, 10000, Risk({0.4: 500}), 'linear', 1]
+[1200, 10000, Risk({0.4: 500}), 'square root', 1]
+[1200, 0, Risk({0.4: 5000}), 'linear', 0]
+[1200, 0, Risk({0.4: 5000}), 'square root', 0]
+[1200, 10000, Risk({0.4: 5000}), 'linear', 0]
+[1200, 10000, Risk({0.4: 5000}), 'square root', 0]
+
+...
+```
+à commenter
+
+on va regarder des choix pour des risques simples et des polices d'assurances classiques.
+individu aux revenus modestes / moyens / élevés
+risque proba/cout FF, FH, HF, HH  
+fonctions d'utilités: linéaire, racine carrée, (logarithmique pas fait car trop long)
+
+
+idée: remodéliser des exemples simples pour retrouver l'intuition expliquée par Yoyo au début
+
+### Modélisation risque plus complexe
+```{python, eval=F}
+months = 24
+iters = 1000
+
+risk = {0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}
+
+incomes = [400, 1200, 4000]
+savings = [0, 10000]
+premiums = [0, 10, 40]
+utilities = [linear_utility, power_utility, logarithmic_utility]
+utility_names = {0: "linear", 1: "square root", 2: "logarithmic"}
+
+for income in incomes:
+  for premium in premiums:
+    for s in savings:
+      for i, utility in enumerate(utilities):
+        agent = Agent(income=income, initial_savings=s, risk=risk, 
+                      decay_factor=1, utility_func=utility)
+        policy_full = Insurance(risk, prime=premium)
+        policy_200_80 = Insurance(risk, franchise=200, 
+                                  reimbursement_part=0.8, prime=premium)
+        policy_800_80 = Insurance(risk, franchise=800, 
+                                  reimbursement_part=0.8, prime=premium)
+        
+        EVs = [0]
+        policy_B_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_B_EV = agent.find_delta(
+            policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_B_EV)
+          
+        policy_C_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_C_EV = agent.find_delta(
+          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_C_EV)
+          
+        policy_D_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_D_EV = agent.find_delta(
+          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_D_EV)
+         
+        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
+        
+        row = [income, s, risk, utility_names[i], best_policy]
+        print(row)
+```
+
+pas encore simmulé
+
+#### Sans prime d'assurance
+risque complexe, différentes polices d'assurances disponibles, trouver les populations qui préfèrent s'autoassurer et expliquer pourquoi
+=> probablement rarement le cas pour des particuliers car ne pas consommer pour garder de l'argent de côté coute cher en utilité.
+
+#### Avec prime d'assurance
+voilà
+
+
+## Conclusion  
+
+Nous avons vu que s'autoassurer pour un particulier est rarement une bonne idée dans un cadre dans lequel les assurances ne comportent pas de prime. Nous notons tout de même que pour des risques faibles (inférieurs aux revenus de l'individu), l'autoassurance semble rester le choix optimal. Ceci est relativement logique: si un incident survient, l'individu pourra le couvrir de toutes façons. Il n'y a donc aucun intérêt à payer une assurance et diminuer sa consommation d'autant aujourd'hui pour peut-être ne pas absorber la totalité du risque plus tard. Les contrats avec franchise semblent donc optimaux de ce point de vue: les particuliers ne paient pas d'assurance pour les risques qu'ils préfèrent de toutes façons subir eux-même.  
+
+Pour ce qui est des risques élevés, le choix se porte clairement vers l'assurance traditionnelle, avec couverture aussi élevée que possible. Il s'agit de risques que l'individu ne peut pas absorber, et recourrir à une assurance traditionnelle est donc plus ou moins obligatoire pour un agent rationnel.  
+
+Pour les cas intermédiaires, les conclusions doivent être prises avec du recul puisque nous avons modélisé des polices d'assurance sans prime.
+
+# Annexes
+
+Définition des classes que nous allons utiliser pour les simulations Monte Carlo.  
+
+On commence par définir une classe qui contiendra les loteries auxquels les agents seront soumis.  
+```{python}
+import random  
+
+class Risk:
+  def __init__(self, risk={0.5: 200}):
+    self.probas = risk
+    
+  def EV(self):
+    return sum(proba * loss for proba, loss in self.probas.items())
+  
+  def __rmul__(self, factor):
+    ''' On définit la multiplication par un facteur pour pouvoir rescale les
+    résultats de la loterie'''
+    p = self.probas
+    for k in self.probas: p[k] *= factor
+    return Risk(p)
+  
+  def __repr__(self):
+    return f"Risk({self.probas})"
+```
+
+De la même manière, une classe qui permettra d'encapsuler les polices d'assurance.
+```{python}
+class Insurance:
+  def __init__(self, risk, reimbursement_part=1, franchise=0, prime=0):
+    self.reimbursement = reimbursement_part
+    self.franchise = franchise
+    self.mensuality = sum(p * max(0, loss-franchise) * reimbursement_part for \
+                                                p, loss in risk.probas.items())
+    self.premium = prime
+  
+  def use(self, x):
+    return -self.mensuality - self.premium + max(0, x-self.franchise) * self.reimbursement
+```
+
+Et finalement, la classe des agents.
+```{python}
+import random  
+
+class Agent:
+  def __init__(self, income, risk, initial_savings=0, 
+               utility_func=None, decay_factor=1,  interests=0.01):
+    self.utility_func = utility_func if utility_func is not None else lambda x: x
+    self.initial_income = income
+    self.income = income
+    self.initial_savings = initial_savings
+    self.risk = risk
+    self.decay = decay_factor
+    self.cumulative_utility = 0
+    self.best_savings_target = 0
+    self.i = interests
+    self.reinit()
+    self.selfinsurance_utility = None
+    self.deltas = {} # just memo stuff to save time on multiple comparisons.
+    
+  def record_selfinsurance_utility(self):
+    self.insurance = Insurance(self.risk, reimbursement_part=0)
+    self.selfinsurance_utility = self.find_best_savings_target(self.insurance, steps=50, iters=1000)["best_EU"]
+    
+  def find_delta(self, insurance, target_utility, step, max_delta=1000, steps=50, iters=1000):
+    '''Computes the equivalent variation on income in order to go from
+    the selfinsurance plan to the utility of a target plan'''
+    # On enregistre l'utilité liée à l'autoassurance si on ne l'a pas encore
+    if self.selfinsurance_utility is None: self.record_selfinsurance_utility()
+    # On s'assure d'aller chercher du bon côté
+    if target_utility < self.selfinsurance_utility: 
+      step *= -1
+      self.income += step
+      current_utility = self.find_best_savings_target(
+          self.insurance, steps=steps, iters=iters)["best_EU"]
+      while current_utility > target_utility:
+        self.income += step
+        current_utility = self.find_best_savings_target(
+            self.insurance, steps=steps, iters=iters)["best_EU"]
+      delta = self.income - self.initial_income
+      self.income = self.initial_income
+      return delta
+    else:
+      self.income += step
+      current_utility = self.find_best_savings_target(
+          self.insurance, steps=steps, iters=iters)["best_EU"]
+      while current_utility < target_utility:
+        self.income += step
+        current_utility = self.find_best_savings_target(
+            self.insurance, steps=steps, iters=iters)["best_EU"]
+      delta = self.income - self.initial_income
+      self.income = self.initial_income
+      return delta
+    
+  def reinit(self, utility_func=None, savings_target=0):
+    self.savings = self.initial_savings
+    self.cumulative_utility = 0
+    if utility_func is not None:
+      self.utility_func = utility_func
+    self.savings_target = savings_target
+    
+  def risk_lottery(self):
+    rng = random.random()
+    for proba, loss in self.risk.probas.items():
+      if rng < proba: return -loss
+      else: rng -= proba
+    return 0
+    
+  def simul_utility(self, insurance, savings_target, timesteps=12):
+    result = 0
+    for i in range(timesteps):
+      # First they pay interests if they had to borrow to meet negative balance
+      if self.savings < 0: self.savings *= (1+self.i)
+      # Then they receive their income
+      self.savings += self.income
+      # Then they deal with the risk
+      self.savings += insurance.use(self.risk_lottery())
+      # Then they consume if they have enough available
+      consommation = max(0, self.savings - self.savings_target)
+      
+      self.savings -= consommation
+      result += self.utility_func(consommation) * self.decay ** i
+    return result
+    
+  def compute_expected_utility(self, insurance, N=1000, target=None, timesteps=12):
+    eu = 0
+    for i in range(N):
+      self.reinit(savings_target = self.savings_target if target is None else target)
+      eu += self.simul_utility(insurance, self.savings_target, timesteps=timesteps) / N
+    return eu
+  
+  def find_best_savings_target(self, insurance, timesteps=12, steps=50, iters=1000):
+    best_savings_target = 0
+    best_eu = self.compute_expected_utility(insurance, N=iters, target=0)
+    for i in range(steps):
+      eu = self.compute_expected_utility(insurance, N=iters, timesteps=timesteps, 
+                                         target = (i+1)*int(max(self.risk.probas.values())/steps))
+      if eu > best_eu:
+        best_savings_target = (i+1)*steps
+        best_eu = eu
+    return {"savings_target": best_savings_target, "best_EU": best_eu}
+```
+
+Définition des fonctions d'utilité que nous allons utiliser.  
 
 
 
+Simulations
+
+```{python, comment=NA}
+risk_LL = Risk({0.05: 500})
+risk_LH = Risk({0.05: 5000})
+risk_HL = Risk({0.35: 500})
+risk_HH = Risk({0.35: 5000})
+risks = [risk_LL, risk_LH, risk_HL, risk_HH]
+iters = 1000
+
+agent_income=400
+utility_func = linear_utility
+
+output = "Agent modeste sous autoassurance et fonction d'utilité linéaire\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="self insurance")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+output += "\n"
+  
+output += "Agent modeste sous assurance totale et fonction d'utilité linéaire\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="full coverage")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+print(output)
+```
+
+```{python, comment=NA}
+agent_income=400
+utility_func=power_utility
+output = "Agent modeste sous autoassurance et fonction d'utilité racine carrée\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="self insurance")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+output += "\n"
+  
+output += "Agent modeste sous assurance totale et fonction d'utilité racine carrée\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="full coverage")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+print(output)
+```
 
 
+```{python, comment=NA}
+agent_income=400
+utility_func=logarithmic_utility
 
-
-
-
-
-
-
-
-
-
-
-
-
+output = "Agent modeste sous autoassurance et fonction d'utilité logarithmique\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="self insurance")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+output += "\n"
+  
+output += "Agent modeste sous assurance totale et fonction d'utilité logarithmique\n"
+for risk in risks:
+  insurance = Insurance(risk, mode="full coverage")
+  if insurance.premium < agent_income:
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+                          utility_func=utility_func, decay_factor=0.9)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
+  else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
+print(output)
+```

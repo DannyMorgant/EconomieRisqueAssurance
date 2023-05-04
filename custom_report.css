@@ -1,4 +1,4 @@
-body {background-color: #F6F4F4;}
+body {background-color: #F6F6F6;}
 
 h2 {
   margin-top: 1.25em;
@@ -24,19 +24,19 @@ img {
   margin-left: auto;
   margin-right: auto;
   border: solid black 1px;
-  box-shadow: 1px 1px 5px darkgray;
+  box-shadow: 1px 1px 3px darkgray;
 }
 
 .pagedtable-wrapper {
   background-color: white;
   border: solid black 1px;
-  box-shadow: 1px 1px 5px darkgray;
+  box-shadow: 1px 1px 3px darkgray;
 }
 
 pre {
   background-color: white;
   border: solid black 1px;
-  box-shadow: 1px 1px 5px darkgray;
+  box-shadow: 1px 1px 3px darkgray;
 }
 
 p {
