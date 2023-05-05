@@ -17,433 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(reticulate)
 ```
 
-
-Nous allons ici discuter de l’auto-assurance. Pour cela, nous allons dans un premier temps définir ce qu’est
-une assurance et introduire la notion d’auto-assurance afin d’y donner dans un second temps les avantages
-et les inconvénients de ce type d’arrangement. Dans une troisième partie nous discuterons de la viabilité de
-l’auto-assurance pour enfin conclure cette partie sur les combinaisons de ces deux méthodes.
-
-# Projet assurance et auto-assurance
-
-Une assurance est un contrat entre un assureur et une personne ou une entreprise dans lequel l’assureur
-s’engage à offrir une protection financière contre des pertes spécifiques en échange d’une prime régulière
-payée par la personne ou l’entreprise. Cette protection financière est destinée à couvrir les pertes financières
-imprévues, telles que les accidents, les maladies, les décès, les dommages matériels, les pertes commerciales,
-les actes de vandalisme, entre autres. L’objectif de l’assurance est de limiter les risques financiers associés à
-ces pertes et de fournir une tranquillité d’esprit à l’assuré.  
-L’auto-assurance, fait référence à la décision d’une personne ou d’une entreprise de prendre en charge les
-risques et les coûts financiers associés à une perte éventuelle plutôt que de transférer ces risques à une
-compagnie d’assurance ou à un tiers. Cela peut être réalisé en constituant une réserve financière, en mettant
-en place un plan de prévention et de gestion des risques, ou encore en acceptant une franchise ou une
-coassurance pour réduire les coûts de prime d’assurance.  
-L’auto-assurance est courante chez les particuliers, notamment pour les soins de santé et les soins dentaires,
-où les réclamations sont fréquentes et plus facilement prévisibles que pour les garanties d’assurance vie ou
-d’assurance salaire de longue durée. Bien qu’il soit possible de ne pas souscrire à des contrats d’assurance,
-certaines assurances personnelles et professionnelles sont obligatoires, telles que l’assurance habitation pour
-les locataires ou l’assurance automobile
-
-
-## Quels sont les avantages et les inconvénients de l'auto-assurance par rapport à l'assurance traditionnelle ? 
-
-L’auto-assurance peut permettre à l’assuré de réaliser des économies. En choisissant d’assumer seul les pertes
-éventuelles, l’auto-assurance peut être moins coûteuse qu’une assurance traditionnelle, notamment pour les
-risques faibles et prévisibles. L’entreprise ou le particulier peut alors constituer une réserve financière pour
-couvrir ces risques, évitant ainsi les frais administratifs et les taxes liés à une assurance classique. De plus,
-l’auto-assurance offre une grande flexibilité en permettant de personnaliser les niveaux de couverture et de
-franchise, ce qui peut parfois être difficile à obtenir avec une assurance traditionnelle. Les demandes de
-sinistres peuvent également être traitées plus rapidement car il n’y a pas de tiers impliqué dans le processus
-de traitement.  
-L’auto-assurance est donc une option à considérer pour les entreprises et les particuliers, mais elle peut
-exposer davantage à des risques financiers en cas de sinistre. Cette option nécessite également des liquidités
-suffisantes pour couvrir les coûts potentiels des sinistres, ainsi qu’une capacité de gestion des risques adéquate
-pour être efficace. Il est important de noter que l’auto-assurance peut être limitée en termes de couverture
-par rapport à une assurance traditionnelle, ce qui peut être un facteur limitant. De plus, l’auto-assurance
-peut également entraîner une incertitude quant aux coûts futurs, qui peuvent être difficiles à prévoir.
-
-### viabilité de l'auto-assurance
-
-L’auto-assurance peut être une option viable pour certains types de risques, tels que les risques prévisibles,
-gérables, à faible ou moyen niveau, réglementés par la loi et compatibles avec la capacité de gestion des
-risques de l’entreprise ou du particulier. Pour que l’auto-assurance soit efficace, il est important que les
-fonds nécessaires pour couvrir les coûts soient disponibles et que les risques soient gérés correctement.
-Cependant, pour les risques à haut niveau, complexes, réglementés par la loi et coûteux à gérer, l’auto-
-assurance peut ne pas être une option viable. Ces risques peuvent être difficiles à gérer en interne et peuvent
-nécessiter une expertise spécialisée. Dans de tels cas, une assurance traditionnelle peut être la meilleure
-option pour assurer une couverture adéquate et fournir des ressources et des services spécialisés pour aider
-à gérer les risques
-
-
-#### le coût  
-
-Le montant de la perte potentielle à laquelle nous sommes confrontés peut impacter notre décision entre une assurance traditionnelle et l'autoassurance.  
-
-Imaginons qu'un individu possède une voiture d'une valeur de $20000$ euros et les coûts de réparation en cas d'accident sont estimés à $5000$ euros. Il essaie de décider s'il doit souscrire à une assurance. Il estime que sa probabilité d'accident est de *5*% par an. S'il achète une assurance, il paiera $500$ euros par an de mensualités tandis que s'il ne souscrit pas à cette assurance il devra assumer les pertes potentielles lui-même.  
-
-S'il choisit de ne pas souscrire au contrat d'assurance, il devra mettre de côté $5000 * 0.05 = 250$ euros par an dans un compte d'épargne afin de couvrir ses frais éventuels. Si l'accident n'arrive jamais, il gagnera des intérêts sur cette épargne et si l'accident arrive il pourra utiliser cet argent pour couvrir les frais. Si le coût de réparation après un accident est inférieur à l'argent qu'il économiserait en ne payant pas les mensualités, alors il peut faire sens de s'autoassurer.  
-
-
-### exposition au risque  
-
-Une différence au niveau de la probabilité de matérialisation d'un risque peut également influer sur la décision entre une assurance traditionnelle ou l'autoassurance:  
-
-Supposons qu'un individu envisage de souscrire une assurance contre les inondations pour sa maison. Il habite dans une région propice aux inondations et le coût des réparations en cas d'inondation pourrait être significatif. Le coût de l'assurance contre les inondations est de 1 000 euros par an.  
-
-L'individu estime qu'il y a 20 % de chances que sa maison soit inondée au cours de la prochaine année et que le coût des réparations serait de 50 000 euros si cela devait arriver. S'il n'achète pas d'assurance contre les inondations, il devra couvrir le coût des réparations avec ses propres moyens.  
-
-Pour déterminer s'il doit souscrire une assurance contre les inondations ou s'auto-assurer, l'individu calcule les coûts monétaires attendus de chaque option. S'il souscrit une assurance contre les inondations, son coût monétaire attendu pour l'année est simplement le coût de la prime, soit 1 000 euros. S'il choisit de s'auto-assurer, son coût monétaire attendu est la probabilité d'inondation multipliée par le coût des réparations, soit 20 % fois 50 000 euros, ce qui équivaut à 10 000 euros.  
-
-Dans ce cas, le coût monétaire attendu de l'auto-assurance est plus élevé que le coût de l'achat d'une assurance, il est donc probable que l'individu choisisse d'acheter une assurance contre les inondations. Cependant, la décision peut également dépendre d'autres facteurs tels que la tolérance au risque de l'individu et sa capacité à payer les réparations avec ses propres moyens en cas d'inondation.  
-
-#### Epargne initiale  
-
-Supposons qu'un individu ait une épargne disponible de 10 000 euros. Il envisage de souscrire une assurance automobile avec une prime annuelle de 2 000 euros, mais il a également la possibilité de s'auto-assurer en cas de dommages. Il estime que le coût annuel moyen des dommages potentiels est de 500 euros, avec une probabilité de 5 % de subir des dommages chaque année.
-
-Si l'individu choisit de s'assurer traditionnellement, il paiera une prime annuelle de 2 000 euros, ce qui représente 20 % de son épargne disponible. Si l'individu choisit de s'auto-assurer, il n'aura pas à payer de prime d'assurance, mais il devra assumer le coût des dommages s'il survient.
-
-Supposons que l'individu décide de s'auto-assurer. En moyenne, il s'attend à payer 500 euros par an pour couvrir les dommages, mais il peut également épargner 2 000 euros par an en ne payant pas de prime d'assurance. Au bout de deux ans sans incident, l'individu aura épargné 4 000 euros, ce qui représente 40 % de son épargne initiale. Si un incident se produit, il devra payer le coût des dommages avec ses propres économies, ce qui pourrait être inférieur ou supérieur à 500 euros.
-
-Dans ce cas, l'épargne disponible de l'individu influe sur sa décision d'auto-assurance. S'il n'a pas suffisamment d'économies pour s'auto-assurer, il pourrait être contraint de souscrire une assurance traditionnelle. En revanche, s'il dispose d'une épargne importante, il pourrait choisir de s'auto-assurer pour économiser sur les primes d'assurance.
-
-
-#### Aversion au risque  
-
-Prenons l'exemple de deux personnes, Alice et Bob, qui doivent décider s'ils vont s'assurer pour un risque de 10 000 euros. Alice est neutre au risque, tandis que Bob est aversif au risque et sa fonction d'utilité est de la forme U(W) = W^(0.5), où W représente sa richesse.  
-Si Alice achète une assurance, elle paiera une prime de 2 000 euros pour une couverture de 10 000 euros. Si l'incident se produit, elle sera remboursée intégralement et ne subira donc aucune perte. Si elle ne s'assure pas, elle ne paiera pas de prime mais risque de subir une perte de 10 000 euros si l'incident se produit.  
-Pour Bob, si l'incident se produit, il subira une perte de 10 000 euros, ce qui réduira sa richesse à 90 000 euros. S'il achète une assurance, il paiera une prime de 2 000 euros, ce qui réduira sa richesse à 98 000 euros. S'il ne s'assure pas, il ne paiera pas de prime mais risque de subir une perte de 10 000 euros, ce qui réduira sa richesse à 90 000 euros.  
-Dans ce cas, Alice choisira de ne pas s'assurer, car elle est neutre au risque et considère que l'espérance de gain est de 8 000 euros, quel que soit le choix. Bob, en revanche, préférera acheter l'assurance, car il est aversif au risque et considère que l'espérance de gain est plus élevée s'il achète l'assurance, à savoir 96 000 euros, par rapport à l'espérance de gain de 90 000 euros s'il ne s'assure pas.  
-L'aversion au risque peut donc aussi être un facteur déterminant pour le choix de l'autoassurance.  
-
-### Mélange des deux types d'arrangements  
-
-L’auto-assurance peut être utilisée pour combler les lacunes de couverture laissées par l’assurance tradition-
-nelle de différentes manières. Tout d’abord, elle peut être utilisée pour couvrir les coûts de franchise, qui
-peuvent parfois être très élevés. De plus, si les polices d’assurance traditionnelles ne couvrent pas les coûts de
-dommages mineurs, l’auto-assurance peut être une option pour couvrir ces coûts. Ensuite, l’auto-assurance
-peut être utilisée pour ajouter une couverture supplémentaire pour les risques ou les événements non couverts
-par l’assurance traditionnelle, tels que les catastrophes naturelles. Enfin, elle peut assurer une continuité
-de couverture pour l’assuré, en cas d’expiration ou de résiliation de la police d’assurance traditionnelle. En
-utilisant l’auto-assurance de manière appropriée, il est possible de combler les lacunes de couverture laissées
-par l’assurance traditionnelle et de mieux protéger contre les risques et les imprévus.
-On peut dans le cas d’une entreprise avoir la situation suivante :  
-Supposons que vous possédiez une entreprise et que vous ayez souscrit une assurance responsabilité civile
-professionnelle pour couvrir les coûts en cas de dommages causés à des tiers dans le cadre de vos activités
-professionnelles.  
-Vous pouvez également mettre en place un fonds d’auto-assurance pour couvrir les frais de sinistre de votre
-entreprise qui sont inférieurs à un certain montant. Par exemple, vous pouvez décider de couvrir les coûts
-des sinistres jusqu’à 5 000€, mais de laisser l’assurance traditionnelle couvrir les coûts des sinistres supérieurs
-à 5 000€.  
-Cela vous permet de réduire les primes d’assurance que vous payez, car vous couvrez vous-même les coûts
-des sinistres mineurs, mais vous avez toujours une assurance traditionnelle pour les sinistres plus importants.
-Cependant, il est important de noter que la mise en place d’un fonds d’auto-assurance peut être risquée, car
-si les coûts des sinistres sont plus élevés que prévu, cela peut mettre en péril les finances de votre entreprise.
-En somme, le choix entre l’auto-assurance et l’assurance traditionnelle devrait être fondé sur une analyse
-approfondie des avantages et des inconvénients de chaque option en fonction du type de risque. Opter pour
-une combinaison des deux options pourrait également être la solution la plus adaptée à l’assuré.  
-
-### Pour quels types de risques?  
-comme on a vu précédemment, çà, çà, çà et çà. De manière plus générale, çà c'est mieux dans tel cas parce que, çà c'est mieux dans tel cas parce que.  
-Au final, l'autoassurance n'est viable qu'à l'intersection de çà, çà et çà. Elle semble donc assez limitée.  
-
-Dans la prochaine partie, on va illustrer cela dans des systèmes avec des individus divers ayant des fortunes diverses et se voyant proposer plusieurs types de contrats d'assurance.
-
-## Comment l'auto-assurance peut-elle aider à combler les lacunes de couverture laissées par l'assurance traditionnelle ?  
-
-On a vu plus haut que l'autoAss était envisageable pour çà et çà. En pratique, beaucoup de personnes ont recours à l'autoassurance du fait de lacunes de couvertures par l'assurance tradi. Oar exemple:  
-- Certaines personnes ne peuvent plus souscrire à des assurance, par exemple voiture, suite à des problèmes antérieurs.  
-- La plupart des contrats d'assurance ne couvrent pas tous les risques.  
-- ???
-- Profit   
-(déso j'ai confondu)  
-
-### suite
-
-
-pour la suite on veut mettre en évidence le choix des gens entre prendre une assurance ou rester en auto-assurance en fonction de:  
-- leur niveau de revenu ou revenu+épargne  
-- leur profil d'utilité (on va prendre plusieurs fonctions d'utilité je pense?)  
-- leur profil de risque (chaque gonze va avoir ses propres probas d'avoir une couille)  
-
-pour chaque mec et chaque police d'assurance on calculera (ou simulera, probablement plus facile) 
-- son utilité sur un an vu que les souscriptions sont en général d'un an avant de pouvoir changer  
-- son *équivalent de variation* par rapport à l'auto-assurance  
-  
-ensuite on n'aura plus qu'à générérer aléatoirement des populations de mecs, et regarder l'évolution du "bonheur général", genre avec la fonction utilitarienne (somme des utilités de la pop) ou autre suivant quand ajoute ou pas la possibilité d'avoir telle ou telle police d'assurance  
-
-on identifie les types de gonzes qui restent en auto-assurance -> voilà c'est eux qu'il faudrait cibler en cherchant à créer de nouveaux types de contrats vu que c'est eux qui sont tristes.
-
-
-Afin de pouvoir regarder comment évolue l'utilité d'un indidividu en fonction de plusieurs facteurs dont les politiques d'assurances auxquelles il a souscrit, nous aurons besoin d'un modèle. Tout d'abord, nous devons prendre en compte que nous souhaitons comparer avec l'autoassurance, qui nécessite que l'individu absorbe lui-même le risque pour lequel il s'autoassure, des politiques d'assurance traditionnelles. Ceci implique notamment que l'individu va très probablement devoir mettre de l'argent de côté afin de pouvoir le gérer. Nos modèles doivent donc prendre en compte à la fois les revenus de l'individu et son épargne, tout en calculant son utilité sur sa consommation. Il nous a semblé difficile de correctement modéliser ce genre de choix à une période, aussi nous avons décidé de travailler su plusieurs. Nous avons choisi des étapes mensuelles et un horizon à deux ans. Notre idée est que l'individu doit gérer son risque dans le temps, et l'horizon de temps de un an nous semblait raisonnable.  
-
-Nous considérons donc que chaque mois, l'individu fait un choix d'allocation: soit il utilise ses revenus pour consommer, soit pour constituer une réserve permettant d'absorber un risque dans le cas où il serait soumis à un. Nous assimilons l'épargne que l'individu effectue en vue d'accomplir des projets personnels futurs comme de la consommation par simplicité. Le choix de la quantité à consommer chaque mois dépend donc de la quantité d'argent que l'individu souhaite avoir épargné pour gérer son propre risque et qui reste à déterminer. Il s'agit d'un problème de contrôle optimal discret dans lequel l'individu cherche à maximiser la somme de ses utilités tout au long de l'année. L'individu a également une perception du poids qu'il souhaite accorder à ses utilités futures, que nous modéliserons sous la forme d'un facteur inférieur appartement à $[0, 1]$.  
-
-$$U = \Sigma_{i=0}^{11} \text{utilité(consommation}_i \text{)} \cdot \text{facteur_oubli}^i $$
-
-Face à chaque risque, un individu fait un choix d'assurance parmi celles disponibles. Comme tous les individus sont différents nous allons devoir prendre en compte plusieurs formes possibles de fonctions d'utilité représentant différent niveaux d'aversion au risque. Cependant, nous ne pourrons pas directement comparer les utilités de différents individus puisque ces fonctions ne servent qu'à ordonner des choix ou situations de leur point de vue mais leurs valeurs n'ont pas de sens. Néanmoins, nous voulons comparer les gains de *bien-être* (*welfare*) que des individus différents auraient à passer d'un type de contrat d'assurance à un autre.  
-
-### La variation équivalente  
-
-La variation équivalente (VE) est une manière de mesurer le gain *bien-être* d'un individu à passer d'une siuation à une autre. Au lieu d'exprimer ce gain sous la forme d'une valeur d'utilité, elle est exprimée sous la forme d'une somme monétaire. Il s'agit de la somme qui conduit à l'égalité suivante:  
-$$U_{situation_1}(x + VE) = U_{situation_2}(x)$$
-
-Elle s'interprète comme la quantité d'argent supplémentaire qu'il faudrait donner à un individu dans la situation 1 pour qu'il ait la même utilité que lorsqu'il est dans la situation 2. Si l'individu préfère la situation 2 alors $VE > 0$, et inversement. Ceci vaut à la condition que les fonctions d'utilités soient strictement croissantes, ce qui sera le cas dans le reste de ce document.  
-L'avantage de cette approche est que nous pouvons comparer les variations équivalentes d'individus ayant des fonctions d'utilités différentes. Comme nous souhaitons comparer les choix des individus entre différentes polices d'assurance pour différents niveaux d'aversion au risque, c'est donc ce que nous allons utiliser.
-
-### Types de contrats d'assurance considérés  
-
-Nous allons considérer quatre contrats d'assurance dans ce projet: 
-- l'auto-assurance, que l'on assimile à un contrat dans lequel l'individu absorbe tout son risque.  
-- la couverture totale, dans laquelle l'individu paie une mensualité en échange de la prise en charge totale des réalisations du risque auquel il est soumis.  
-- un contrat à franchise $200$ et à remboursement partiel, nous avons choisi d'utiliser $80$%.  
-- un contrat à franchise $800$ et à remboursement partiel, ici aussi $80$%.  
-
-Nous pourrons ainsi comparer les deux cas classiques à une police d'assurance non linéaire plutôt adaptés aux revenus modestes et une plutôt adaptée aux revenus plus élevés. Notre objectif est de regarder comment les revenus, l'épargne, et le profil d'aversion au risque influe sur le choix de police d'assurance. Nous espérons identifier quelle population préfère l'auto-assurance et pour quel types de risques. Dans un premier temps nous prendrons en compte des assurances sans prime d'assurance. Nous en introduirons une dans la dernière partie.  
-
-### Simulations
-
-Nous allons considérer des individus aux fonctions d'utilité linéaires, de puissance $1/2$, et logarithmique. L'idée est de balayer depuis les individus neutres au risque jusqu'à des individus très averses au risque. Nous allons également leur donner un facteur d'oubli de 1 afin de ne pas modéliser le fait qu'au moment où l'individu fait son choix de police d'assurance et de cible des on intérêt reste plus porté sur le court terme que le long terme. Nous souhaitons en effet plutôt modéliser un agent rationnel qui prend une décision optimale.  
-
-```{python}
-import math
-def linear_utility(x): return x
-
-def logarithmic_utility(x): return math.log(1+x)
-
-def power_utility(x, exponent=0.5): return x**exponent
-```
-
-Afin de modéliser différentes richesses d'individus, nous allons prendre en compte à la fois leur épargne initiale et leurs revenus. Afin d'éviter de complexifier le modèle nous considérons le revenu disponible des individus, et uniquement l'épargne qu'ils souhaitent allouer à la gestion de leur risque. Nous prendrons pous cela des individus aux revenus disponibles de *400*, *1200* et *4000*, et des épargnes initiales soit nulles soit de 10000.  
-
-Nous soumettons ces individus à différents types de risques à la conditions qu'ils puissent s'assurer contre: 
-- Un risque de faible probabilité et faible coût avec $5$% de chances de subir un coût de 500.  
-- Un risque de forte probabilité et faible coût avec $40$% de chances de subir un coût de 500.  
-- Un risque de faible probabilité et coût élevé avec $5$% de chances de subir un coût de 5000.  
-- Un risque de forte probabilité et coût élevé avec $40$% de chances de subir un coût de 5000.  
-
-```{python, eval=F}
-months = 24
-iters = 1000
-
-risk_LL = Risk({0.05: 500})
-risk_LH = Risk({0.05: 5000})
-risk_HL = Risk({0.4: 500})
-risk_HH = Risk({0.4: 5000})
-risks = [risk_LL, risk_LH, risk_HL, risk_HH]
-
-incomes = [400, 1200, 4000]
-savings = [0, 10000]
-utilities = [linear_utility, power_utility, logarithmic_utility]
-
-for income in incomes:
-  for risk in risks:
-    for s in savings:
-      for utility in utilities:
-        agent = Agent(income=income, initial_savings=s, risk=risk, 
-                      decay_factor=1, utility_func=utility)
-        policy_full = Insurance(risk)
-        policy_200_80 = Insurance(risk, franchise=200, reimbursement_part=0.8)
-        policy_800_80 = Insurance(risk, franchise=800, reimbursement_part=0.8)
-        
-        EVs = [0]
-        policy_B_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_B_EV = agent.find_delta(
-          policy_full, policy_B_utility, steps=30, iters=iters)
-        EVs.append(policy_B_EV)
-          
-        policy_C_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_C_EV = agent.find_delta(
-          policy_full, policy_B_utility, steps=30, iters=iters)
-        EVs.append(policy_C_EV)
-          
-        policy_D_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_D_EV = agent.find_delta(
-          policy_full, policy_B_utility, steps=30, iters=iters)
-        EVs.append(policy_D_EV)
-         
-        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
-        
-        row = [income, s, risk, utility, best_policy]
-        print(row)
-```
-
-### Résultats
-
-```
-[400, 0, Risk({0.05: 500}), 'linear', 1]
-[400, 0, Risk({0.05: 500}), 'square root', 1]
-[400, 10000, Risk({0.05: 500}), 'linear', 1]
-[400, 10000, Risk({0.05: 500}), 'square root', 1]
-[400, 0, Risk({0.05: 5000}), 'linear', 0]
-[400, 0, Risk({0.05: 5000}), 'square root', 1]
-[400, 10000, Risk({0.05: 5000}), 'linear', 0]
-[400, 10000, Risk({0.05: 5000}), 'square root', 1]
-[400, 0, Risk({0.4: 500}), 'linear', 0]
-[400, 0, Risk({0.4: 500}), 'square root', 1]
-[400, 10000, Risk({0.4: 500}), 'linear', 0]
-[400, 10000, Risk({0.4: 500}), 'square root', 1]
-[400, 0, Risk({0.4: 5000}), 'linear', 0]
-[400, 0, Risk({0.4: 5000}), 'square root', 0]
-[400, 10000, Risk({0.4: 5000}), 'linear', 0]
-[400, 10000, Risk({0.4: 5000}), 'square root', 0]
-[1200, 0, Risk({0.05: 500}), 'linear', 1]
-[1200, 0, Risk({0.05: 500}), 'square root', 1]
-[1200, 10000, Risk({0.05: 500}), 'linear', 1]
-[1200, 10000, Risk({0.05: 500}), 'square root', 1]
-[1200, 0, Risk({0.05: 5000}), 'linear', 1]
-[1200, 0, Risk({0.05: 5000}), 'square root', 1]
-[1200, 10000, Risk({0.05: 5000}), 'linear', 1]
-[1200, 10000, Risk({0.05: 5000}), 'square root', 1]
-[1200, 0, Risk({0.4: 500}), 'linear', 1]
-[1200, 0, Risk({0.4: 500}), 'square root', 1]
-[1200, 10000, Risk({0.4: 500}), 'linear', 1]
-[1200, 10000, Risk({0.4: 500}), 'square root', 1]
-[1200, 0, Risk({0.4: 5000}), 'linear', 0]
-[1200, 0, Risk({0.4: 5000}), 'square root', 0]
-[1200, 10000, Risk({0.4: 5000}), 'linear', 0]
-[1200, 10000, Risk({0.4: 5000}), 'square root', 0]
-[4000, 0, Risk({0.05: 500}), 'linear', 1]
-[4000, 0, Risk({0.05: 500}), 'square root', 1]
-[4000, 10000, Risk({0.05: 500}), 'linear', 1]
-[4000, 10000, Risk({0.05: 500}), 'square root', 1]
-[4000, 0, Risk({0.05: 5000}), 'linear', 1]
-[4000, 0, Risk({0.05: 5000}), 'square root', 1]
-[4000, 10000, Risk({0.05: 5000}), 'linear', 1]
-[4000, 10000, Risk({0.05: 5000}), 'square root', 1]
-[4000, 0, Risk({0.4: 500}), 'linear', 1]
-[4000, 0, Risk({0.4: 500}), 'square root', 1]
-[4000, 10000, Risk({0.4: 500}), 'linear', 1]
-[4000, 10000, Risk({0.4: 500}), 'square root', 1]
-[4000, 0, Risk({0.4: 5000}), 'linear', 0]
-[4000, 0, Risk({0.4: 5000}), 'square root', 1]
-[4000, 10000, Risk({0.4: 5000}), 'linear', 0]
-[4000, 10000, Risk({0.4: 5000}), 'square root', 1]
-...
-```
-à commenter
-
-on va regarder des choix pour des risques simples et des polices d'assurances classiques.
-individu aux revenus modestes / moyens / élevés
-risque proba/cout FF, FH, HF, HH  
-fonctions d'utilités: linéaire, racine carrée, (logarithmique pas fait car trop long)
-
-
-idée: remodéliser des exemples simples pour retrouver l'intuition expliquée par Yoyo au début
-
-### Modélisation risque plus complexe
-```{python, eval=F}
-months = 24
-iters = 1000
-
-risk = {0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}
-
-incomes = [400, 1200, 4000]
-savings = [0, 10000]
-premiums = [0, 10, 40]
-utilities = [linear_utility, power_utility, logarithmic_utility]
-utility_names = {0: "linear", 1: "square root", 2: "logarithmic"}
-
-for income in incomes:
-  for premium in premiums:
-    for s in savings:
-      for i, utility in enumerate(utilities):
-        agent = Agent(income=income, initial_savings=s, risk=risk, 
-                      decay_factor=1, utility_func=utility)
-        policy_full = Insurance(risk, prime=premium)
-        policy_200_80 = Insurance(risk, franchise=200, 
-                                  reimbursement_part=0.8, prime=premium)
-        policy_800_80 = Insurance(risk, franchise=800, 
-                                  reimbursement_part=0.8, prime=premium)
-        
-        EVs = [0]
-        policy_B_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_B_EV = agent.find_delta(
-            policy_full, policy_B_utility, step=15, steps=30, iters=iters)
-        EVs.append(policy_B_EV)
-          
-        policy_C_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_C_EV = agent.find_delta(
-          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
-        EVs.append(policy_C_EV)
-          
-        policy_D_utility = agent.find_best_savings_target(
-          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
-        policy_D_EV = agent.find_delta(
-          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
-        EVs.append(policy_D_EV)
-         
-        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
-        
-        row = [income, s, risk, utility_names[i], best_policy]
-        print(row)
-```
-
-```
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0]
-[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1]
-[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1]
-
-```
-pas encore simulé
-
-#### Sans prime d'assurance
-risque complexe, différentes polices d'assurances disponibles, trouver les populations qui préfèrent s'autoassurer et expliquer pourquoi
-=> probablement rarement le cas pour des particuliers car ne pas consommer pour garder de l'argent de côté coute cher en utilité.
-
-#### Avec prime d'assurance
-voilà
-
-
-## Conclusion  
-
-Nous avons vu que s'autoassurer pour un particulier est rarement une bonne idée dans un cadre dans lequel les assurances ne comportent pas de prime. Nous notons tout de même que pour des risques faibles (inférieurs aux revenus de l'individu), l'autoassurance semble rester le choix optimal. Ceci est relativement logique: si un incident survient, l'individu pourra le couvrir de toutes façons. Il n'y a donc aucun intérêt à payer une assurance et diminuer sa consommation d'autant aujourd'hui pour peut-être ne pas absorber la totalité du risque plus tard. Les contrats avec franchise semblent donc optimaux de ce point de vue: les particuliers ne paient pas d'assurance pour les risques qu'ils préfèrent de toutes façons subir eux-même.  
-
-Pour ce qui est des risques élevés, le choix se porte clairement vers l'assurance traditionnelle, avec couverture aussi élevée que possible. Il s'agit de risques que l'individu ne peut pas absorber, et recourrir à une assurance traditionnelle est donc plus ou moins obligatoire pour un agent rationnel.  
-
-Pour les cas intermédiaires, les conclusions doivent être prises avec du recul puisque nous avons modélisé des polices d'assurance sans prime.
-
-# Annexes
-
-Définition des classes que nous allons utiliser pour les simulations Monte Carlo.  
-
-On commence par définir une classe qui contiendra les loteries auxquels les agents seront soumis.  
-```{python}
+```{python, include=F, eval=F}
 import random  
 
 class Risk:
@@ -464,8 +38,7 @@ class Risk:
     return f"Risk({self.probas})"
 ```
 
-De la même manière, une classe qui permettra d'encapsuler les polices d'assurance.
-```{python}
+```{python, include=F, eval=F}
 class Insurance:
   def __init__(self, risk, reimbursement_part=1, franchise=0, prime=0):
     self.reimbursement = reimbursement_part
@@ -475,11 +48,11 @@ class Insurance:
     self.premium = prime
   
   def use(self, x):
-    return -self.mensuality - self.premium + max(0, x-self.franchise) * self.reimbursement
+    return -self.mensuality - self.premium + \
+            max(0, x-self.franchise) * self.reimbursement
 ```
 
-Et finalement, la classe des agents.
-```{python}
+```{python, include=F, eval=F}
 import random  
 
 class Agent:
@@ -581,13 +154,545 @@ class Agent:
     return {"savings_target": best_savings_target, "best_EU": best_eu}
 ```
 
-Définition des fonctions d'utilité que nous allons utiliser.  
+Nous allons ici discuter de l’auto-assurance. Pour cela, nous allons dans un premier temps définir ce qu’est
+une assurance et introduire la notion d’auto-assurance afin d’y donner dans un second temps les avantages
+et les inconvénients de ce type d’arrangement. Dans une troisième partie nous discuterons de la viabilité de
+l’auto-assurance pour enfin conclure cette partie sur les combinaisons de ces deux méthodes.
+
+# Projet assurance et auto-assurance
+
+Une assurance est un contrat entre un assureur et une personne ou une entreprise dans lequel l’assureur
+s’engage à offrir une protection financière contre des pertes spécifiques en échange d’une prime régulière
+payée par la personne ou l’entreprise. Cette protection financière est destinée à couvrir les pertes financières
+imprévues, telles que les accidents, les maladies, les décès, les dommages matériels, les pertes commerciales,
+les actes de vandalisme, entre autres. L’objectif de l’assurance est de limiter les risques financiers associés à
+ces pertes et de fournir une tranquillité d’esprit à l’assuré.  
+L’auto-assurance, fait référence à la décision d’une personne ou d’une entreprise de prendre en charge les
+risques et les coûts financiers associés à une perte éventuelle plutôt que de transférer ces risques à une
+compagnie d’assurance ou à un tiers. Cela peut être réalisé en constituant une réserve financière, en mettant
+en place un plan de prévention et de gestion des risques, ou encore en acceptant une franchise ou une
+coassurance pour réduire les coûts de prime d’assurance.  
+L’auto-assurance est courante chez les particuliers, notamment pour les soins de santé et les soins dentaires,
+où les réclamations sont fréquentes et plus facilement prévisibles que pour les garanties d’assurance vie ou
+d’assurance salaire de longue durée. Bien qu’il soit possible de ne pas souscrire à des contrats d’assurance,
+certaines assurances personnelles et professionnelles sont obligatoires, telles que l’assurance habitation pour
+les locataires ou l’assurance automobile
 
 
+## Quels sont les avantages et les inconvénients de l'auto-assurance par rapport à l'assurance traditionnelle ? 
 
-Simulations
+L’auto-assurance peut permettre à l’assuré de réaliser des économies. En choisissant d’assumer seul les pertes
+éventuelles, l’auto-assurance peut être moins coûteuse qu’une assurance traditionnelle, notamment pour les
+risques faibles et prévisibles. L’entreprise ou le particulier peut alors constituer une réserve financière pour
+couvrir ces risques, évitant ainsi les frais administratifs et les taxes liés à une assurance classique. De plus,
+l’auto-assurance offre une grande flexibilité en permettant de personnaliser les niveaux de couverture et de
+franchise, ce qui peut parfois être difficile à obtenir avec une assurance traditionnelle. Les demandes de
+sinistres peuvent également être traitées plus rapidement car il n’y a pas de tiers impliqué dans le processus
+de traitement.  
+L’auto-assurance est donc une option à considérer pour les entreprises et les particuliers, mais elle peut
+exposer davantage à des risques financiers en cas de sinistre. Cette option nécessite également des liquidités
+suffisantes pour couvrir les coûts potentiels des sinistres, ainsi qu’une capacité de gestion des risques adéquate
+pour être efficace. Il est important de noter que l’auto-assurance peut être limitée en termes de couverture
+par rapport à une assurance traditionnelle, ce qui peut être un facteur limitant. De plus, l’auto-assurance
+peut également entraîner une incertitude quant aux coûts futurs, qui peuvent être difficiles à prévoir.
 
-```{python, comment=NA}
+
+#### La perte potentielle  
+
+Le montant de la perte potentielle à laquelle nous sommes confrontés peut impacter notre décision entre une assurance traditionnelle et l'autoassurance.  
+
+Imaginons qu'un individu possède une voiture d'une valeur de $20000$ euros et les coûts de réparation en cas d'accident sont estimés à $5000$ euros. Il essaie de décider s'il doit souscrire à une assurance. Il estime que sa probabilité d'accident est de *5*% par an. S'il achète une assurance, il paiera $500$ euros par an de mensualités tandis que s'il ne souscrit pas à cette assurance il devra assumer les pertes potentielles lui-même.  
+
+S'il choisit de ne pas souscrire au contrat d'assurance, il devra mettre de côté $5000 * 0.05 = 250$ euros par an dans un compte d'épargne afin de couvrir ses frais éventuels. Si l'accident n'arrive jamais, il gagnera des intérêts sur cette épargne et si l'accident arrive il pourra utiliser cet argent pour couvrir les frais. Si le coût de réparation après un accident est inférieur à l'argent qu'il économiserait en ne payant pas les mensualités, alors il peut faire sens de s'autoassurer.  
+
+#### L'exposition au risque
+
+Une différence au niveau de la probabilité de matérialisation d'un risque peut également influer sur la décision entre une assurance traditionnelle ou l'autoassurance:  
+
+Supposons qu'un individu envisage de souscrire une assurance contre les inondations pour sa maison. Il habite dans une région propice aux inondations et le coût des réparations en cas d'inondation pourrait être significatif. Le coût de l'assurance contre les inondations est de 1 000 euros par an.  
+
+L'individu estime qu'il y a 20 % de chances que sa maison soit inondée au cours de la prochaine année et que le coût des réparations serait de 50 000 euros si cela devait arriver. S'il n'achète pas d'assurance contre les inondations, il devra couvrir le coût des réparations avec ses propres moyens.  
+
+Pour déterminer s'il doit souscrire une assurance contre les inondations ou s'auto-assurer, l'individu calcule les coûts monétaires attendus de chaque option. S'il souscrit une assurance contre les inondations, son coût monétaire attendu pour l'année est simplement le coût de la prime, soit 1 000 euros. S'il choisit de s'auto-assurer, son coût monétaire attendu est la probabilité d'inondation multipliée par le coût des réparations, soit 20 % fois 50 000 euros, ce qui équivaut à 10 000 euros.  
+
+Dans ce cas, le coût monétaire attendu de l'auto-assurance est plus élevé que le coût de l'achat d'une assurance, il est donc probable que l'individu choisisse d'acheter une assurance contre les inondations. Cependant, la décision peut également dépendre d'autres facteurs tels que la tolérance au risque de l'individu et sa capacité à payer les réparations avec ses propres moyens en cas d'inondation.  
+
+#### L'épargne initiale  
+
+Supposons qu'un individu ait une épargne disponible de 10 000 euros. Il envisage de souscrire une assurance automobile avec une prime annuelle de 2 000 euros, mais il a également la possibilité de s'auto-assurer en cas de dommages. Il estime que le coût annuel moyen des dommages potentiels est de 500 euros, avec une probabilité de 5 % de subir des dommages chaque année.
+
+Si l'individu choisit de s'assurer traditionnellement, il paiera une prime annuelle de 2 000 euros, ce qui représente 20 % de son épargne disponible. Si l'individu choisit de s'auto-assurer, il n'aura pas à payer de prime d'assurance, mais il devra assumer le coût des dommages s'il survient.
+
+Supposons que l'individu décide de s'auto-assurer. En moyenne, il s'attend à payer 500 euros par an pour couvrir les dommages, mais il peut également épargner 2 000 euros par an en ne payant pas de prime d'assurance. Au bout de deux ans sans incident, l'individu aura épargné 4 000 euros, ce qui représente 40 % de son épargne initiale. Si un incident se produit, il devra payer le coût des dommages avec ses propres économies, ce qui pourrait être inférieur ou supérieur à 500 euros.
+
+Dans ce cas, l'épargne disponible de l'individu influe sur sa décision d'auto-assurance. S'il n'a pas suffisamment d'économies pour s'auto-assurer, il pourrait être contraint de souscrire une assurance traditionnelle. En revanche, s'il dispose d'une épargne importante, il pourrait choisir de s'auto-assurer pour économiser sur les primes d'assurance.
+
+#### L'aversion au risque  
+
+Prenons l'exemple de deux personnes, Alice et Bob, qui doivent décider s'ils vont s'assurer pour un risque de 10 000 euros. Alice est neutre au risque, tandis que Bob est aversif au risque et sa fonction d'utilité est de la forme U(W) = W^(0.5), où W représente sa richesse.  
+Si Alice achète une assurance, elle paiera une prime de 2 000 euros pour une couverture de 10 000 euros. Si l'incident se produit, elle sera remboursée intégralement et ne subira donc aucune perte. Si elle ne s'assure pas, elle ne paiera pas de prime mais risque de subir une perte de 10 000 euros si l'incident se produit.  
+Pour Bob, si l'incident se produit, il subira une perte de 10 000 euros, ce qui réduira sa richesse à 90 000 euros. S'il achète une assurance, il paiera une prime de 2 000 euros, ce qui réduira sa richesse à 98 000 euros. S'il ne s'assure pas, il ne paiera pas de prime mais risque de subir une perte de 10 000 euros, ce qui réduira sa richesse à 90 000 euros.  
+Dans ce cas, Alice choisira de ne pas s'assurer, car elle est neutre au risque et considère que l'espérance de gain est de 8 000 euros, quel que soit le choix. Bob, en revanche, préférera acheter l'assurance, car il est aversif au risque et considère que l'espérance de gain est plus élevée s'il achète l'assurance, à savoir 96 000 euros, par rapport à l'espérance de gain de 90 000 euros s'il ne s'assure pas.  
+L'aversion au risque peut donc aussi être un facteur déterminant pour le choix de l'autoassurance.  
+
+### Pour quels types de risques?  
+
+Comme vu précédemment, l'autoassurance est une option envisageable pour des risques dont la perte potentielle est faible en magnitude, dont la probabilité d'occurrence est faible, et si l'individu possède une épargne initiale suffisante pour le couvrir: il s'agit des risques prévisibles, gérables, à faible ou moyen niveau, et compatibles avec la capacité de gestion des risques de l’entreprise ou du particulier. Pour que l’auto-assurance soit efficace, il est important que les fonds nécessaires pour couvrir les coûts soient disponibles et que les risques soient gérés correctement.  
+
+Cependant, pour les risques à haut niveau, complexes, réglementés par la loi ou coûteux à gérer, l’auto-
+assurance peut ne pas être une option viable. Ces risques peuvent être difficiles à gérer en interne et peuvent
+nécessiter une expertise spécialisée. Dans de tels cas, une assurance traditionnelle peut être la meilleure
+option pour assurer une couverture adéquate et fournir des ressources et des services spécialisés pour aider
+à gérer les risques.  
+
+## Comment l'auto-assurance peut-elle aider à combler les lacunes de couverture laissées par l'assurance traditionnelle ?  
+
+L’auto-assurance peut être utilisée pour combler les lacunes de couverture laissées par l’assurance tradition-
+nelle de différentes manières. Tout d’abord, elle peut être utilisée pour couvrir les coûts de franchise, qui
+peuvent parfois être très élevés. De plus, si les polices d’assurance traditionnelles ne couvrent pas les coûts de dommages mineurs, l’auto-assurance peut être une option pour couvrir ces coûts. Ensuite, l’auto-assurance
+peut être utilisée pour ajouter une couverture supplémentaire pour les risques ou les événements non couverts
+par l’assurance traditionnelle, tels que les catastrophes naturelles. Enfin, elle peut assurer une continuité
+de couverture pour l’assuré, en cas d’expiration ou de résiliation de la police d’assurance traditionnelle. En
+utilisant l’auto-assurance de manière appropriée, il est possible de combler les lacunes de couverture laissées
+par l’assurance traditionnelle et de mieux protéger contre les risques et les imprévus.
+On peut dans le cas d’une entreprise avoir la situation suivante :  
+Supposons que vous possédiez une entreprise et que vous ayez souscrit une assurance responsabilité civile
+professionnelle pour couvrir les coûts en cas de dommages causés à des tiers dans le cadre de vos activités
+professionnelles.  
+Vous pouvez également mettre en place un fonds d’auto-assurance pour couvrir les frais de sinistre de votre
+entreprise qui sont inférieurs à un certain montant. Par exemple, vous pouvez décider de couvrir les coûts
+des sinistres jusqu’à 5 000€, mais de laisser l’assurance traditionnelle couvrir les coûts des sinistres supérieurs
+à 5 000€.  
+Cela vous permet de réduire les primes d’assurance que vous payez, car vous couvrez vous-même les coûts
+des sinistres mineurs, mais vous avez toujours une assurance traditionnelle pour les sinistres plus importants.
+Cependant, il est important de noter que la mise en place d’un fonds d’auto-assurance peut être risquée, car
+si les coûts des sinistres sont plus élevés que prévu, cela peut mettre en péril les finances de votre entreprise.
+En sommes, le choix entre l’auto-assurance et l’assurance traditionnelle devrait être fondé sur une analyse
+approfondie des avantages et des inconvénients de chaque option en fonction du type de risque. Opter pour
+une combinaison des deux pourrait également être la solution la plus adaptée à l’assuré.  
+
+## Simulations  
+
+Afin de voir en action la manière dont ces différents éléments agissent sur le choix de s'assurer, nous avons souhaiter effectuer quelques simulations de *scénarii*. Nous avons pour cela tenté de simuler le choix rationnel d'un d'individu pour un type d'assurance en fonction de plusieurs facteurs:  
+- son niveau de revenu et d'épargne.
+- son aversion au risque.
+- la nature du risque auquel il est soumis.  
+
+Nous espérons ainsi pouvoir comparer les résultats obtenus et ainsi illustrer les éléments discutés plus haut.
+
+Afin de pouvoir regarder comment évolue l'utilité d'un indidividu en fonction de ces facteurs et de son choix de politique d'assurance, nous aurons besoin d'un modèle. Tout d'abord, nous devons prendre en compte que nous souhaitons comparer des politiques d'assurance traditionnelles avec l'autoassurance, qui nécessite que l'individu absorbe lui-même le risque pour lequel il s'autoassure. Ceci implique notamment que l'individu va très probablement devoir mettre de l'argent de côté afin de pouvoir le gérer. Nos modèles doivent donc prendre en compte à la fois les revenus de l'individu et son épargne, tout en calculant son utilité sur sa consommation. Il nous a semblé difficile de correctement modéliser ce genre de choix à une période, aussi nous avons décidé de travailler sur plusieurs. Nous avons choisi des étapes mensuelles et un horizon à deux ans. Notre idée est que l'individu doit gérer son risque dans le temps, et cet horizon de temps pour un choix de modèle d'assurance nous semblait raisonnable: le choix d'un type d'assurance est typiquement un choix à moyen terme puisque l'on ne peut pas changer trop fréquemment. Un horizon de deux ans nous permettait également d'avoir suffisamment de périodes dans chaque essai et permet ainsi de stabiliser les résultats des simulations.     
+
+Nous considérons que chaque mois, l'individu fait un choix d'allocation: soit il utilise ses revenus pour consommer, soit pour constituer une réserve permettant d'absorber la matérialisation éventuelle d'un risque. Nous assimilons par simplicité l'épargne que l'individu effectue en vue d'accomplir des projets personnels futurs à de la consommation. Le choix de la quantité à consommer chaque mois dépend donc de la quantité d'argent que l'individu souhaite avoir épargné pour gérer son propre risque et qui reste à déterminer. Il s'agit d'un problème de contrôle optimal discret dans lequel l'individu cherche à maximiser la somme de ses utilités tout au long de la période. L'individu a également une perception du poids qu'il souhaite accorder à ses utilités futures, que nous modéliserons sous la forme d'un facteur appartenant à $[0, 1]$.  
+
+$$U = \Sigma_{i=0}^{11} \text{utilité(consommation}_i \text{)} \cdot \text{facteur_oubli}^i $$
+
+Face à chaque risque, un individu fait un choix d'assurance parmi celles disponibles. Comme tous les individus sont différents nous allons devoir prendre en compte plusieurs formes possibles de fonctions d'utilité représentant différent niveaux d'aversion au risque. Cependant, nous ne pourrons pas directement comparer les utilités de différents individus puisque ces fonctions ne servent qu'à ordonner des choix ou situations de leur point de vue mais leurs valeurs n'ont pas de sens. Néanmoins, nous voulons comparer les gains de *bien-être* (*welfare*) que des individus différents auraient à passer d'un type de contrat d'assurance à un autre.  
+
+### La variation équivalente  
+
+La variation équivalente (VE) est une manière de mesurer le gain de *bien-être* d'un individu à passer d'une siuation à une autre. Au lieu d'exprimer ce gain sous la forme d'une valeur d'utilité, elle est exprimée sous la forme d'une somme monétaire. Il s'agit de la somme qui conduit à l'égalité suivante:  
+$$U_{situation_1}(x + VE) = U_{situation_2}(x)$$
+
+Elle s'interprète comme la quantité d'argent supplémentaire qu'il faudrait donner à un individu dans la situation 1 pour qu'il ait la même utilité que lorsqu'il est dans la situation 2. Si l'individu préfère la situation 2 alors $VE > 0$, et inversement. Ceci vaut à la condition que les fonctions d'utilités soient monotones, ce qui sera le cas dans le reste de ce document.  
+L'avantage de cette approche est que nous pouvons comparer les variations équivalentes d'individus ayant des fonctions d'utilités différentes. Comme nous souhaitons comparer les choix des individus entre différentes polices d'assurance pour différents niveaux d'aversion au risque, c'est donc ce que nous allons utiliser.
+
+### Types de contrats d'assurance considérés  
+
+Nous allons considérer quatre contrats d'assurance dans ce projet: 
+- l'auto-assurance, que l'on assimile à un contrat dans lequel l'individu absorbe tout son risque.  
+- la couverture totale, dans laquelle l'individu paie une mensualité en échange de la prise en charge totale des réalisations du risque auquel il est soumis.  
+- un contrat à franchise $200$ et à remboursement partiel, nous avons choisi d'utiliser $80$%.  
+- un contrat à franchise $800$ et à remboursement partiel, ici aussi $80$%.  
+
+Nous pourrons ainsi comparer les deux cas classiques à une police d'assurance non linéaire plutôt adaptés aux revenus modestes et une plutôt adaptée aux revenus plus élevés. Notre objectif est de regarder comment les revenus, l'épargne, et le profil d'aversion au risque influe sur le choix de police d'assurance. Nous espérons identifier quelle population préfère l'auto-assurance et pour quel types de risques. Dans un premier temps nous prendrons en compte des assurances sans prime d'assurance. Nous en introduirons une dans la dernière partie.  
+
+### Simulations
+
+Nous allons considérer des individus aux fonctions d'utilité linéaires et racine carrée. Nous aurons ainsi un exemple d'individu neutre au risque et un exeple d'individu averse au risque. Nous allons également leur donner un facteur d'oubli de 1 afin de ne pas modéliser le fait qu'au moment où l'individu fait son choix de police d'assurance et de cible d'épargne son intérêt reste plus porté sur le court terme que le long terme. Nous souhaitons en effet plutôt modéliser un agent rationnel qui prend une décision optimale. Dans le temps.  
+
+```{python, eval=F}
+import math
+def linear_utility(x): return x
+
+def logarithmic_utility(x): return math.log(1+x)
+
+def power_utility(x, exponent=0.5): return x**exponent
+```
+
+Afin de modéliser différentes richesses d'individus, nous allons prendre en compte à la fois leur épargne initiale et leurs revenus. Afin d'éviter de simplifier le modèle nous ne considérons que le revenu disponible des individus, et uniquement l'épargne qu'ils souhaitent allouer à la gestion de leur risque. Nous prendrons pour cela des individus aux revenus disponibles de *400*, *1200* et *4000*, et des épargnes initiales soit nulles soit de 10000.  
+
+Nous soumettons ces individus à différents types de risques:  
+- Un risque de faible probabilité et faible coût avec $5$% de chances de subir un coût de 500.  
+- Un risque de forte probabilité et faible coût avec $40$% de chances de subir un coût de 500.  
+- Un risque de faible probabilité et coût élevé avec $5$% de chances de subir un coût de 5000.  
+- Un risque de forte probabilité et coût élevé avec $40$% de chances de subir un coût de 5000.  
+
+
+```{python, eval=F}
+months = 24
+iters = 1000
+
+risk_LL = Risk({0.05: 500})
+risk_LH = Risk({0.05: 5000})
+risk_HL = Risk({0.4: 500})
+risk_HH = Risk({0.4: 5000})
+risks = [risk_LL, risk_LH, risk_HL, risk_HH]
+
+incomes = [400, 1200, 4000]
+savings = [0, 10000]
+utilities = [linear_utility, power_utility, logarithmic_utility]
+
+for income in incomes:
+  for risk in risks:
+    for s in savings:
+      for utility in utilities:
+        agent = Agent(income=income, initial_savings=s, risk=risk, 
+                      decay_factor=1, utility_func=utility)
+        policy_full = Insurance(risk)
+        policy_200_80 = Insurance(risk, franchise=200, reimbursement_part=0.8)
+        policy_800_80 = Insurance(risk, franchise=800, reimbursement_part=0.8)
+        
+        EVs = [0]
+        policy_B_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_B_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_B_EV)
+          
+        policy_C_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_C_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_C_EV)
+          
+        policy_D_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_D_EV = agent.find_delta(
+          policy_full, policy_B_utility, steps=30, iters=iters)
+        EVs.append(policy_D_EV)
+         
+        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
+        
+        row = [income, s, risk, utility, best_policy]
+        print(row)
+```
+
+```
+[400, 0, Risk({0.05: 500}), 'linear', 1]
+[400, 0, Risk({0.05: 500}), 'square root', 1]
+[400, 10000, Risk({0.05: 500}), 'linear', 1]
+[400, 10000, Risk({0.05: 500}), 'square root', 1]
+[400, 0, Risk({0.05: 5000}), 'linear', 0]
+[400, 0, Risk({0.05: 5000}), 'square root', 1]
+[400, 10000, Risk({0.05: 5000}), 'linear', 0]
+[400, 10000, Risk({0.05: 5000}), 'square root', 1]
+[400, 0, Risk({0.4: 500}), 'linear', 0]
+[400, 0, Risk({0.4: 500}), 'square root', 1]
+[400, 10000, Risk({0.4: 500}), 'linear', 0]
+[400, 10000, Risk({0.4: 500}), 'square root', 1]
+[400, 0, Risk({0.4: 5000}), 'linear', 0]
+[400, 0, Risk({0.4: 5000}), 'square root', 0]
+[400, 10000, Risk({0.4: 5000}), 'linear', 0]
+[400, 10000, Risk({0.4: 5000}), 'square root', 0]
+[1200, 0, Risk({0.05: 500}), 'linear', 1]
+[1200, 0, Risk({0.05: 500}), 'square root', 1]
+[1200, 10000, Risk({0.05: 500}), 'linear', 1]
+[1200, 10000, Risk({0.05: 500}), 'square root', 1]
+[1200, 0, Risk({0.05: 5000}), 'linear', 1]
+[1200, 0, Risk({0.05: 5000}), 'square root', 1]
+[1200, 10000, Risk({0.05: 5000}), 'linear', 1]
+[1200, 10000, Risk({0.05: 5000}), 'square root', 1]
+[1200, 0, Risk({0.4: 500}), 'linear', 1]
+[1200, 0, Risk({0.4: 500}), 'square root', 1]
+[1200, 10000, Risk({0.4: 500}), 'linear', 1]
+[1200, 10000, Risk({0.4: 500}), 'square root', 1]
+[1200, 0, Risk({0.4: 5000}), 'linear', 0]
+[1200, 0, Risk({0.4: 5000}), 'square root', 0]
+[1200, 10000, Risk({0.4: 5000}), 'linear', 0]
+[1200, 10000, Risk({0.4: 5000}), 'square root', 0]
+[4000, 0, Risk({0.05: 500}), 'linear', 1]
+[4000, 0, Risk({0.05: 500}), 'square root', 1]
+[4000, 10000, Risk({0.05: 500}), 'linear', 1]
+[4000, 10000, Risk({0.05: 500}), 'square root', 1]
+[4000, 0, Risk({0.05: 5000}), 'linear', 1]
+[4000, 0, Risk({0.05: 5000}), 'square root', 1]
+[4000, 10000, Risk({0.05: 5000}), 'linear', 1]
+[4000, 10000, Risk({0.05: 5000}), 'square root', 1]
+[4000, 0, Risk({0.4: 500}), 'linear', 1]
+[4000, 0, Risk({0.4: 500}), 'square root', 1]
+[4000, 10000, Risk({0.4: 500}), 'linear', 1]
+[4000, 10000, Risk({0.4: 500}), 'square root', 1]
+[4000, 0, Risk({0.4: 5000}), 'linear', 0]
+[4000, 0, Risk({0.4: 5000}), 'square root', 1]
+[4000, 10000, Risk({0.4: 5000}), 'linear', 0]
+[4000, 10000, Risk({0.4: 5000}), 'square root', 1]
+```
+à commenter
+
+on va regarder des choix pour des risques simples et des polices d'assurances classiques.
+individu aux revenus modestes / moyens / élevés
+risque proba/cout FF, FH, HF, HH  
+fonctions d'utilités: linéaire, racine carrée, (logarithmique pas fait car trop long)
+
+
+idée: remodéliser des exemples simples pour retrouver l'intuition expliquée par Yoyo au début
+
+### Modélisation risque plus complexe
+
+Maintenant que nous avons une idée générale de la manière dont les individus choisissent leurs politique d'assurance dans des cas simples, nous avons souhaiter modéliser un risque plus complexe, et cette fois-ci en prenant également en compte le fait qu'un assureur souhaite être rémunéré contre le risque qu'il subit à la place de son client. Le risque sélectionné comprend maintenant plusieurs niveaux:  
+- $20$% de chances de subir une perte de $250$€ chaque mois
+- $10$% de chances de subir une perte de $500$€ chaque mois
+- $1$% de chances de subir une perte de $15000$€ chaque mois
+- $0.1$% de chances de subir une perte de $100000$€ chaque mois
+
+```{python, eval=F}
+months = 24
+iters = 1000
+
+risk = {0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}
+
+incomes = [400, 1200, 4000]
+savings = [0, 10000]
+premiums = [0, 10, 40]
+utilities = [linear_utility, power_utility, logarithmic_utility]
+utility_names = {0: "linear", 1: "square root", 2: "logarithmic"}
+
+for income in incomes:
+  for premium in premiums:
+    for s in savings:
+      for i, utility in enumerate(utilities):
+        agent = Agent(income=income, initial_savings=s, risk=risk, 
+                      decay_factor=1, utility_func=utility)
+        policy_full = Insurance(risk, prime=premium)
+        policy_200_80 = Insurance(risk, franchise=200, 
+                                  reimbursement_part=0.8, prime=premium)
+        policy_800_80 = Insurance(risk, franchise=800, 
+                                  reimbursement_part=0.8, prime=premium)
+        
+        EVs = [0]
+        policy_B_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_B_EV = agent.find_delta(
+            policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_B_EV)
+          
+        policy_C_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_C_EV = agent.find_delta(
+          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_C_EV)
+          
+        policy_D_utility = agent.find_best_savings_target(
+          policy_full, steps=30, iters=iters, timesteps=months)["best_EU"]
+        policy_D_EV = agent.find_delta(
+          policy_full, policy_B_utility, step=15, steps=30, iters=iters)
+        EVs.append(policy_D_EV)
+         
+        best_policy = max(enumerate(EVs),key=lambda x: x[1])[0]
+        
+        row = [income, s, risk, utility_names[i], best_policy, premium]
+        print(row)
+```
+
+```
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 0]
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 0]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 0]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 0]
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 10]
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 10]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 10]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 10]
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 40]
+[400, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 40]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 0, 40]
+[400, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 0, 40]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 0]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 0]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 0]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 0]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 10]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 10]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 10]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 10]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 40]
+[1200, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 40]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 40]
+[1200, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 40]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 0]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 0]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 0]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 0]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 10]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 10]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 10]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 10]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 40]
+[4000, 0, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 40]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'linear', 1, 40]
+[4000, 10000, Risk({0.2: 250, 0.1: 500, 0.01: 15000, 0.001: 100000}), 'square root', 1, 40]
+```
+à interpréter.
+
+-> effet de classe (richesse)
+-> polices d'assurance à franchise jamais préférée: peut-être lié au profil du risque sélectionné qui ne contient pas assez de risque élevés  
+-> d'autres trucs à dire
+
+
+## Conclusion  
+
+Nous avons vu que s'autoassurer pour un particulier est rarement une bonne idée dans un cadre dans lequel les assurances ne comportent pas de prime. Nous notons tout de même que pour des risques faibles (inférieurs aux revenus de l'individu), l'autoassurance semble rester le choix optimal. Ceci est relativement logique: si un incident survient, l'individu pourra le couvrir de toutes façons. Il n'y a donc aucun intérêt à payer une assurance et diminuer sa consommation d'autant aujourd'hui pour peut-être ne pas absorber la totalité du risque plus tard. Les contrats avec franchise semblent donc optimaux de ce point de vue: les particuliers ne paient pas d'assurance pour les risques qu'ils préfèrent de toutes façons subir eux-même.  
+
+Pour ce qui est des risques élevés, le choix se porte clairement vers l'assurance traditionnelle, avec couverture aussi élevée que possible. Il s'agit de risques que l'individu ne peut pas absorber, et recourrir à une assurance traditionnelle est donc plus ou moins obligatoire pour un agent rationnel.  
+
+Pour les cas intermédiaires, les conclusions doivent être prises avec du recul puisque nous avons modélisé des polices d'assurance sans prime.
+
+# Annexes
+
+### Définition des classes que nous allons utiliser pour les simulations Monte Carlo.  
+
+On commence par définir une classe qui contiendra les loteries auxquels les agents seront soumis.  
+```{python, eval=F}
+import random  
+
+class Risk:
+  def __init__(self, risk={0.5: 200}):
+    self.probas = risk
+    
+  def EV(self):
+    return sum(proba * loss for proba, loss in self.probas.items())
+  
+  def __rmul__(self, factor):
+    ''' On définit la multiplication par un facteur pour pouvoir rescale les
+    résultats de la loterie'''
+    p = self.probas
+    for k in self.probas: p[k] *= factor
+    return Risk(p)
+  
+  def __repr__(self):
+    return f"Risk({self.probas})"
+```
+
+De la même manière, une classe qui permettra d'encapsuler les polices d'assurance.
+```{python, eval=F}
+class Insurance:
+  def __init__(self, risk, reimbursement_part=1, franchise=0, prime=0):
+    self.reimbursement = reimbursement_part
+    self.franchise = franchise
+    self.mensuality = sum(p * max(0, loss-franchise) * reimbursement_part for \
+                                                p, loss in risk.probas.items())
+    self.premium = prime
+  
+  def use(self, x):
+    return -self.mensuality - self.premium + max(0, x-self.franchise) * self.reimbursement
+```
+
+Et finalement, la classe des agents.
+```{python, eval=F}
+import random  
+
+class Agent:
+  def __init__(self, income, risk, initial_savings=0, 
+               utility_func=None, decay_factor=1,  interests=0.01):
+    self.utility_func = utility_func if utility_func is not None else lambda x: x
+    self.initial_income = income
+    self.income = income
+    self.initial_savings = initial_savings
+    self.risk = risk
+    self.decay = decay_factor
+    self.cumulative_utility = 0
+    self.best_savings_target = 0
+    self.i = interests
+    self.reinit()
+    self.selfinsurance_utility = None
+    self.deltas = {} # just memo stuff to save time on multiple comparisons.
+    
+  def record_selfinsurance_utility(self):
+    self.insurance = Insurance(self.risk, reimbursement_part=0)
+    self.selfinsurance_utility = self.find_best_savings_target(self.insurance, steps=50, iters=1000)["best_EU"]
+    
+  def find_delta(self, insurance, target_utility, step, max_delta=1000, steps=50, iters=1000):
+    '''Computes the equivalent variation on income in order to go from
+    the selfinsurance plan to the utility of a target plan'''
+    # On enregistre l'utilité liée à l'autoassurance si on ne l'a pas encore
+    if self.selfinsurance_utility is None: self.record_selfinsurance_utility()
+    # On s'assure d'aller chercher du bon côté
+    if target_utility < self.selfinsurance_utility: 
+      step *= -1
+      self.income += step
+      current_utility = self.find_best_savings_target(
+          self.insurance, steps=steps, iters=iters)["best_EU"]
+      while current_utility > target_utility:
+        self.income += step
+        current_utility = self.find_best_savings_target(
+            self.insurance, steps=steps, iters=iters)["best_EU"]
+      delta = self.income - self.initial_income
+      self.income = self.initial_income
+      return delta
+    else:
+      self.income += step
+      current_utility = self.find_best_savings_target(
+          self.insurance, steps=steps, iters=iters)["best_EU"]
+      while current_utility < target_utility:
+        self.income += step
+        current_utility = self.find_best_savings_target(
+            self.insurance, steps=steps, iters=iters)["best_EU"]
+      delta = self.income - self.initial_income
+      self.income = self.initial_income
+      return delta
+    
+  def reinit(self, utility_func=None, savings_target=0):
+    self.savings = self.initial_savings
+    self.cumulative_utility = 0
+    if utility_func is not None:
+      self.utility_func = utility_func
+    self.savings_target = savings_target
+    
+  def risk_lottery(self):
+    rng = random.random()
+    for proba, loss in self.risk.probas.items():
+      if rng < proba: return -loss
+      else: rng -= proba
+    return 0
+    
+  def simul_utility(self, insurance, savings_target, timesteps=12):
+    result = 0
+    for i in range(timesteps):
+      # First they pay interests if they had to borrow to meet negative balance
+      if self.savings < 0: self.savings *= (1+self.i)
+      # Then they receive their income
+      self.savings += self.income
+      # Then they deal with the risk
+      self.savings += insurance.use(self.risk_lottery())
+      # Then they consume if they have enough available
+      consommation = max(0, self.savings - self.savings_target)
+      
+      self.savings -= consommation
+      result += self.utility_func(consommation) * self.decay ** i
+    return result
+    
+  def compute_expected_utility(self, insurance, N=1000, target=None, timesteps=12):
+    eu = 0
+    for i in range(N):
+      self.reinit(savings_target = self.savings_target if target is None else target)
+      eu += self.simul_utility(insurance, self.savings_target, timesteps=timesteps) / N
+    return eu
+  
+  def find_best_savings_target(self, insurance, timesteps=12, steps=50, iters=1000):
+    best_savings_target = 0
+    best_eu = self.compute_expected_utility(insurance, N=iters, target=0)
+    for i in range(steps):
+      eu = self.compute_expected_utility(insurance, N=iters, timesteps=timesteps, 
+                                         target = (i+1)*int(max(self.risk.probas.values())/steps))
+      if eu > best_eu:
+        best_savings_target = (i+1)*steps
+        best_eu = eu
+    return {"savings_target": best_savings_target, "best_EU": best_eu}
+```
+
+### Simulations
+
+```{python, eval=F}
 risk_LL = Risk({0.05: 500})
 risk_LH = Risk({0.05: 5000})
 risk_HL = Risk({0.35: 500})
@@ -600,77 +705,119 @@ utility_func = linear_utility
 
 output = "Agent modeste sous autoassurance et fonction d'utilité linéaire\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="self insurance")
+  insurance = Insurance(risk, reimbursement_part=0)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, 
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 output += "\n"
   
 output += "Agent modeste sous assurance totale et fonction d'utilité linéaire\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="full coverage")
+  insurance = Insurance(risk, reimbursement_part=1)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk,
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 print(output)
 ```
 
-```{python, comment=NA}
+```
+Agent modeste sous autoassurance et fonction d'utilité linéaire
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 2870.281854075986
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 2870.281854075986
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 2870.281854075986
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 2870.281854075986
+
+Agent modeste sous assurance totale et fonction d'utilité linéaire
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 2690.8892381962123
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 1076.3556952784998
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 1614.5335429177803
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 0.0
+```
+
+```{python, eval=F}
 agent_income=400
 utility_func=power_utility
 output = "Agent modeste sous autoassurance et fonction d'utilité racine carrée\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="self insurance")
+  insurance = Insurance(risk, reimbursement_part=0)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk,
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 output += "\n"
   
 output += "Agent modeste sous assurance totale et fonction d'utilité racine carrée\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="full coverage")
+  insurance = Insurance(risk, reimbursement_part=1)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, 
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 print(output)
 ```
 
+```
+Agent modeste sous autoassurance et fonction d'utilité racine carrée
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 143.51409270380026
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 143.51409270380026
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 143.51409270380026
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 143.51409270380026
 
-```{python, comment=NA}
+Agent modeste sous assurance totale et fonction d'utilité racine carrée
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 138.95692274697186
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 87.88407450569608
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 107.63556952784785
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 0.0
+```  
+
+```{python, eval=F}
 agent_income=400
 utility_func=logarithmic_utility
 
 output = "Agent modeste sous autoassurance et fonction d'utilité logarithmique\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="self insurance")
+  insurance = Insurance(risk, reimbursement_part=0)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, 
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 output += "\n"
   
 output += "Agent modeste sous assurance totale et fonction d'utilité logarithmique\n"
 for risk in risks:
-  insurance = Insurance(risk, mode="full coverage")
+  insurance = Insurance(risk, reimbursement_part=1)
   if insurance.premium < agent_income:
-    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk, insurance=insurance, 
+    agent_modeste = Agent(income=agent_income, initial_savings=0, risk=risk,
                           utility_func=utility_func, decay_factor=0.9)
-    res = agent_modeste.find_best_savings_target(steps=500, iters=iters)
+    res = agent_modeste.find_best_savings_target(steps=500, iters=iters, insurance=insurance)
     output += f'{res["savings_target"]} <== {risk.probas} under insurance premium: {insurance.premium} with income {agent_income}, Utility: {res["best_EU"]}\n'
   else: output += f"Cant't afford insurance for risk {risk.probas} with income {agent_income}\n"
 print(output)
 ```
+```
+Agent modeste sous autoassurance et fonction d'utilité logarithmique
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 43.01089679707353
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 43.01089679707353
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 43.01089679707353
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 43.01089679707353
+
+Agent modeste sous assurance totale et fonction d'utilité logarithmique
+0 <== {0.05: 500} under insurance premium: 0 with income 400, Utility: 42.54898030099492
+0 <== {0.05: 5000} under insurance premium: 0 with income 400, Utility: 36.002518181078344
+0 <== {0.35: 500} under insurance premium: 0 with income 400, Utility: 38.89615811948763
+0 <== {0.35: 5000} under insurance premium: 0 with income 400, Utility: 0.0
+```  
+
+La travail avec la fonction d'utilité logarithmique n'a pas été utilisé dans le corps de texte car le temps d'optimisation pour calculer l'équivalent de variation était beaucoup trop long et nous ne pouvions donc pas mener les comparaisons jusqu'au bout.
